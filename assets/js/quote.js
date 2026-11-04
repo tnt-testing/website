@@ -162,8 +162,9 @@
       countUp(state.shown, r.total);
     }
 
-    /* --- submit (FormSubmit → lab inbox) --- */
-    var ENDPOINT = "https://formsubmit.co/ajax/texas.nuclear.technologies@gmail.com";
+    /* --- submit (Google Apps Script → lab inbox; FormSubmit fallback) --- */
+    var GOOGLE_ENDPOINT = ""; // ← paste deployed Apps Script /exec URL here
+    var FS_ENDPOINT = "https://formsubmit.co/ajax/texas.nuclear.technologies@gmail.com";
     var formError = $("#formError");
 
     form.addEventListener("submit", function (e) {
@@ -200,30 +201,49 @@
       };
       if (contact.indexOf("@") !== -1) payload._replyto = contact;
 
-      var ctrl = new AbortController();
-      var timeout = window.setTimeout(function () { ctrl.abort(); }, 12000);
-      fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(payload),
-        signal: ctrl.signal
-      })
-        .then(function (res) { window.clearTimeout(timeout); return res.json(); })
-        .then(function (out) {
-          if (String(out.success) !== "true") throw new Error("rejected");
-          qdRef.textContent =
-            "TNT-" + Math.random().toString(36).slice(2, 7).toUpperCase();
-          qdEst.textContent =
-            state.test.name + " ×" + state.qty +
-            (state.tat === "rush" ? " · RUSH" : "") + " — " + money(r.total);
-          form.hidden = true;
-          done.hidden = false;
-          done.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      var showDone = function () {
+        qdRef.textContent =
+          "TNT-" + Math.random().toString(36).slice(2, 7).toUpperCase();
+        qdEst.textContent =
+          state.test.name + " ×" + state.qty +
+          (state.tat === "rush" ? " · RUSH" : "") + " — " + money(r.total);
+        form.hidden = true;
+        done.hidden = false;
+        done.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      };
+      var showError = function () {
+        submitBtn.classList.remove("working");
+        if (formError) formError.hidden = false;
+      };
+
+      if (GOOGLE_ENDPOINT) {
+        /* Apps Script web app: form-encoded POST, no-cors (opaque = assume sent) */
+        var ctrl = new AbortController();
+        var timeout = window.setTimeout(function () { ctrl.abort(); }, 12000);
+        fetch(GOOGLE_ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          body: new URLSearchParams(payload),
+          signal: ctrl.signal
         })
-        .catch(function () {
-          submitBtn.classList.remove("working");
-          if (formError) formError.hidden = false;
-        });
+          .then(function () { window.clearTimeout(timeout); showDone(); })
+          .catch(showError);
+      } else {
+        var ctrl2 = new AbortController();
+        var timeout2 = window.setTimeout(function () { ctrl2.abort(); }, 12000);
+        fetch(FS_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload),
+          signal: ctrl2.signal
+        })
+          .then(function (res) { window.clearTimeout(timeout2); return res.json(); })
+          .then(function (out) {
+            if (String(out.success) !== "true") throw new Error("rejected");
+            showDone();
+          })
+          .catch(showError);
+      }
     });
 
     form.querySelectorAll("input").forEach(function (inp) {

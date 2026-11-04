@@ -93,6 +93,43 @@ h1, h2, h3 {
   background: var(--gold);
 }
 
+/* hero brand line — holographic gold */
+.eyebrow-brand { gap: 24px; }
+.eyebrow-brand .tick {
+  flex: 1;
+  width: auto;
+  background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+}
+.eyebrow-brand .eb-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.05rem, 2.6vw, 2.4rem);
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+  background: linear-gradient(
+    105deg,
+    #8f6f1d 0%,
+    var(--gold) 20%,
+    #fdf0b8 38%,
+    #fffbe9 50%,
+    #f4e2a2 62%,
+    var(--gold) 80%,
+    #8f6f1d 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: holo-sheen 7s ease-in-out infinite;
+  filter:
+    drop-shadow(0 2px 18px rgba(212, 175, 55, 0.38))
+    drop-shadow(0 0 4px rgba(212, 175, 55, 0.22));
+}
+@keyframes holo-sheen {
+  0%, 100% { background-position: 0% 0; }
+  50%      { background-position: 100% 0; }
+}
+
 /* buttons */
 .btn {
   display: inline-flex;

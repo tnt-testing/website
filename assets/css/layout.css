@@ -201,7 +201,7 @@
 .hero-content { max-width: var(--max-w); margin: 0 auto; width: 100%; }
 
 .hero-title {
-  font-size: clamp(2.6rem, 7.2vw, 6.4rem);
+  font-size: clamp(2.3rem, 5.9vw, 5.3rem);
   font-weight: 700;
   line-height: 1.02;
   letter-spacing: 0.015em;
@@ -578,6 +578,8 @@
   .hero { padding-bottom: 130px; }
   .hero-ctas .btn { flex: 1 1 100%; }
   .eyebrow { flex-wrap: wrap; justify-content: flex-start; row-gap: 12px; letter-spacing: 0.1em; }
+  .eyebrow-brand { gap: 14px; }
+  .eyebrow-brand .eb-text { font-size: 0.82rem; white-space: normal; }
   .bc-row { grid-template-columns: 1fr; gap: 4px; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
   .footer-meta { text-align: left; }
