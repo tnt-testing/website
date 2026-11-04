@@ -296,4 +296,24 @@
   .proc-step { grid-template-columns: 64px 1fr; gap: 16px; }
   .cmpd-grid { grid-template-columns: 1fr; }
   .inst-photo { aspect-ratio: 4 / 3; }
+  .inst-id { font-size: 11.5px; }
+  .inst-name { font-size: clamp(1.9rem, 8.4vw, 2.6rem); margin: 20px 0 10px; }
+  .inst-type { font-size: 12px; letter-spacing: 0.18em; }
+  .inst-role { font-size: 1.02rem; margin-top: 16px; }
+  .kpi-stat { padding: 16px 12px; }
+  .kpi-stat b { font-size: 1.4rem; }
+  .kpi-stat span { font-size: 10.5px; }
+  .inst-sec { padding-top: 64px; }
+  .cmpd-card { padding: 18px 16px; }
+  .cmpd-card h3 { font-size: 15px; }
+  .cmpd-card p { font-size: 13.5px; }
+  .cmpd-lod { font-size: 11px; }
+  .proc-num { font-size: 12px; }
+  .proc-step h3 { font-size: 15.5px; }
+  .proc-step p { font-size: 14px; }
+  .acc-chip { font-size: 11.5px; padding: 10px 12px; }
+  .inst-photo figcaption { font-size: 11px; padding: 10px 14px; }
+  .photo-note { font-size: 11px; }
+  .inst-cta h2 { font-size: 1.4rem; }
+  .inst-cta p { font-size: 12.5px; }
 }

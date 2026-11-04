@@ -600,13 +600,47 @@
   .test-grid { grid-template-columns: 1fr 1fr; }
   .test-grid .test-card { grid-column: auto; }
   .suite-grid { grid-template-columns: 1fr; }
+  .test-card { padding: 18px 15px 14px; min-height: 0; }
+  .tc-icon { width: 24px; height: 24px; margin-bottom: 14px; }
+  .tc-idx { font-size: 11px; top: 12px; right: 12px; }
+  .test-card h3 { font-size: 15px; margin-bottom: 8px; }
+  .test-card p { font-size: 13.5px; margin-bottom: 18px; }
+  .tc-tag { font-size: 11.5px; padding-top: 12px; }
+  .cb-title { font-size: 13.5px; }
   .qc, .readout, .quote-form, .quote-done { padding-left: 20px; padding-right: 20px; }
+  .qc { padding-top: 24px; padding-bottom: 28px; }
+  .qc-group { margin-bottom: 24px; }
+  .qc-label { font-size: 12.5px; margin-bottom: 12px; }
+  .qc-qty { font-size: 16px; }
+  .test-opt { padding: 11px 13px; gap: 11px; }
+  .test-opt .to-name { font-size: 14px; }
+  .test-opt .to-name small { font-size: 11.5px; }
+  .test-opt .to-fee { font-size: 14px; }
+  .qc-scale { font-size: 11px; }
+  .qc-hint { font-size: 11.5px; }
+  .tat-btn { padding: 11px 8px; }
+  .tat-btn b { font-size: 13px; }
+  .tat-btn em { font-size: 11.5px; }
+  .readout { padding-top: 24px; padding-bottom: 28px; }
+  .ro-screen { padding: 18px 18px 14px; }
+  .ro-row { font-size: 13.5px; }
+  .ro-row span { font-size: 11px; }
+  .ro-total { padding-top: 14px; }
+  .ro-total span { font-size: 12px; }
+  .ro-total b { font-size: 1.9rem; }
+  .ro-note { font-size: 10.5px; margin-top: 10px; }
+  .quote-form { padding-top: 22px; padding-bottom: 28px; }
+  .qf-field span { font-size: 11.5px; }
+  .qf-field input { font-size: 14.5px; padding: 11px 12px; }
+  .qf-field textarea { font-size: 14px; min-height: 92px; padding: 11px 12px; }
+  .qf-fine { font-size: 11px; }
+  .qf-error { font-size: 11px; }
+  .qd-line { font-size: 14px; }
+  .quote-done { padding-top: 24px; padding-bottom: 30px; }
   .console-bar { padding: 13px 18px; }
   .cb-meta { display: none; }
 }
 @media (max-width: 460px) {
-  .test-grid { grid-template-columns: 1fr; }
-  .test-card, .test-card:last-child { grid-column: auto; }
   .qf-grid { grid-template-columns: 1fr; }
   .qf-actions .btn { flex: 1 1 100%; }
 }

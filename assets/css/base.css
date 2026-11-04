@@ -189,6 +189,14 @@ h1, h2, h3 {
 .reveal.d3 { transition-delay: 0.24s; }
 .reveal.d4 { transition-delay: 0.32s; }
 
+/* ---------- mobile compaction ---------- */
+@media (max-width: 680px) {
+  body { font-size: 15.5px; }
+  .btn { font-size: 13.5px; padding: 14px 22px; letter-spacing: 0.14em; }
+  .btn-sm { padding: 10px 16px; font-size: 12px; }
+  .btn-wide { padding: 14px 22px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
