@@ -513,6 +513,16 @@
   letter-spacing: 0.12em;
   color: var(--ink-dim);
 }
+.qf-error {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--gold-2);
+  border: 1px dashed var(--gold-2);
+  padding: 10px 14px;
+  flex-basis: 100%;
+}
 .console .btn-ghost {
   color: var(--ink-dim);
   border-color: var(--line-l);

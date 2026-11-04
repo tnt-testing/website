@@ -162,7 +162,10 @@
       countUp(state.shown, r.total);
     }
 
-    /* --- submit --- */
+    /* --- submit (FormSubmit → lab inbox) --- */
+    var ENDPOINT = "https://formsubmit.co/ajax/texas.nuclear.technologies@gmail.com";
+    var formError = $("#formError");
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var ok = true;
@@ -174,18 +177,53 @@
       if (!ok) return;
 
       submitBtn.classList.add("working");
+      if (formError) formError.hidden = true;
       var r = compute();
+      var fd = new FormData(form);
+      var name = (fd.get("name") || "").toString().trim();
+      var company = (fd.get("company") || "").toString().trim();
+      var contact = (fd.get("contact") || "").toString().trim();
 
-      window.setTimeout(function () {
-        qdRef.textContent =
-          "TNT-" + Math.random().toString(36).slice(2, 7).toUpperCase();
-        qdEst.textContent =
-          state.test.name + " ×" + state.qty +
-          (state.tat === "rush" ? " · RUSH" : "") + " — " + money(r.total);
-        form.hidden = true;
-        done.hidden = false;
-        done.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }, 900);
+      var payload = {
+        name: name,
+        company: company,
+        contact: contact,
+        notes: (fd.get("notes") || "").toString().trim(),
+        test: state.test.name + " (" + state.test.sub + ")",
+        quantity: String(state.qty),
+        turnaround: state.tat === "rush" ? "RUSH — 24 HR" : "STANDARD — 48 HR",
+        estimate: money(r.total),
+        _subject: "TNT QUOTE REQUEST — " + name + " / " + company,
+        _template: "table",
+        _captcha: "false",
+        _honey: ""
+      };
+      if (contact.indexOf("@") !== -1) payload._replyto = contact;
+
+      var ctrl = new AbortController();
+      var timeout = window.setTimeout(function () { ctrl.abort(); }, 12000);
+      fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload),
+        signal: ctrl.signal
+      })
+        .then(function (res) { window.clearTimeout(timeout); return res.json(); })
+        .then(function (out) {
+          if (String(out.success) !== "true") throw new Error("rejected");
+          qdRef.textContent =
+            "TNT-" + Math.random().toString(36).slice(2, 7).toUpperCase();
+          qdEst.textContent =
+            state.test.name + " ×" + state.qty +
+            (state.tat === "rush" ? " · RUSH" : "") + " — " + money(r.total);
+          form.hidden = true;
+          done.hidden = false;
+          done.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        })
+        .catch(function () {
+          submitBtn.classList.remove("working");
+          if (formError) formError.hidden = false;
+        });
     });
 
     form.querySelectorAll("input").forEach(function (inp) {
