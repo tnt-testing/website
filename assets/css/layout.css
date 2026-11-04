@@ -577,7 +577,7 @@
   .nav-word strong { font-size: 17px; }
   .mobile-menu a { font-size: 15px; padding: 13px 0; }
   .fac-c, .fac-d { grid-column: span 12; aspect-ratio: 16 / 10; }
-  .hero { padding-bottom: 110px; }
+  .hero { min-height: 0; padding-top: calc(var(--nav-h) + 34px); padding-bottom: 52px; }
   .hero-ctas .btn { flex: 1 1 100%; }
   .eyebrow { flex-wrap: wrap; justify-content: flex-start; row-gap: 12px; letter-spacing: 0.1em; }
   .eyebrow-brand { gap: 14px; }
@@ -585,17 +585,17 @@
   .hero-title { font-size: clamp(1.8rem, 8.6vw, 2.3rem); }
   .hero-tag { font-size: 1.02rem; letter-spacing: 0.16em; margin-bottom: 14px; }
   .hero-sub { font-size: 1rem; margin-bottom: 30px; }
-  .stat { padding: 18px 12px; }
-  .stat-num { font-size: 1.5rem; }
-  .stat-label { font-size: 10.5px; letter-spacing: 0.14em; }
-  .section { padding-top: 74px; }
-  .sec-head { margin-bottom: 34px; }
-  .sec-head h2 { font-size: 1.45rem; }
+  .stat { padding: 15px 8px; }
+  .stat-num { font-size: 1.3rem; }
+  .stat-label { font-size: 9.5px; letter-spacing: 0.1em; margin-top: 6px; }
+  .section { padding-top: 64px; }
+  .sec-head { margin-bottom: 28px; }
+  .sec-head h2 { font-size: 1.4rem; }
   .sec-idx { font-size: 12px; }
   .sec-tag { font-size: 11px; letter-spacing: 0.16em; }
   .fac-item figcaption { font-size: 11px; letter-spacing: 0.14em; padding: 10px 14px; }
-  .brandmark { padding-top: 74px; }
-  .brand-contact { padding: 28px 20px; }
+  .brandmark { padding-top: 64px; }
+  .brand-contact { padding: 24px 18px; }
   .bc-label { font-size: 11px; }
   .bc-title { font-size: 1.35rem; margin-bottom: 16px; }
   .bc-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 0; }

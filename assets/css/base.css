@@ -191,6 +191,7 @@ h1, h2, h3 {
 
 /* ---------- mobile compaction ---------- */
 @media (max-width: 680px) {
+  html, body { overflow-x: clip; }
   body { font-size: 15.5px; }
   .btn { font-size: 13.5px; padding: 14px 22px; letter-spacing: 0.14em; }
   .btn-sm { padding: 10px 16px; font-size: 12px; }

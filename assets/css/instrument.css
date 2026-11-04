@@ -293,27 +293,34 @@
   .cmpd-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 620px) {
-  .proc-step { grid-template-columns: 64px 1fr; gap: 16px; }
-  .cmpd-grid { grid-template-columns: 1fr; }
+  .proc-step { grid-template-columns: 56px 1fr; gap: 14px; padding: 18px 0; }
+  .cmpd-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .inst-photo { aspect-ratio: 4 / 3; }
-  .inst-id { font-size: 11.5px; }
-  .inst-name { font-size: clamp(1.9rem, 8.4vw, 2.6rem); margin: 20px 0 10px; }
-  .inst-type { font-size: 12px; letter-spacing: 0.18em; }
-  .inst-role { font-size: 1.02rem; margin-top: 16px; }
-  .kpi-stat { padding: 16px 12px; }
-  .kpi-stat b { font-size: 1.4rem; }
-  .kpi-stat span { font-size: 10.5px; }
-  .inst-sec { padding-top: 64px; }
-  .cmpd-card { padding: 18px 16px; }
-  .cmpd-card h3 { font-size: 15px; }
-  .cmpd-card p { font-size: 13.5px; }
-  .cmpd-lod { font-size: 11px; }
-  .proc-num { font-size: 12px; }
-  .proc-step h3 { font-size: 15.5px; }
-  .proc-step p { font-size: 14px; }
-  .acc-chip { font-size: 11.5px; padding: 10px 12px; }
-  .inst-photo figcaption { font-size: 11px; padding: 10px 14px; }
-  .photo-note { font-size: 11px; }
-  .inst-cta h2 { font-size: 1.4rem; }
-  .inst-cta p { font-size: 12.5px; }
+  .inst-hero { padding-top: calc(var(--nav-h) + 40px); }
+  .inst-id { font-size: 10.5px; letter-spacing: 0.2em; gap: 10px; }
+  .inst-name { font-size: clamp(1.8rem, 8vw, 2.4rem); margin: 18px 0 8px; }
+  .inst-type { font-size: 11px; letter-spacing: 0.16em; }
+  .inst-role { font-size: 0.98rem; margin-top: 14px; }
+  .kpi-strip { margin-top: 32px; }
+  .kpi-stat { padding: 13px 10px; }
+  .kpi-stat b { font-size: 1.25rem; }
+  .kpi-stat span { font-size: 9.5px; letter-spacing: 0.16em; margin-top: 5px; }
+  .inst-sec { padding-top: 56px; }
+  .cmpd-card { padding: 14px 12px 12px; min-height: 0; }
+  .cmpd-sym { font-size: 1.3rem; margin-bottom: 9px; }
+  .cmpd-card h3 { font-size: 13.5px; margin-bottom: 5px; }
+  .cmpd-card p { font-size: 12px; line-height: 1.45; }
+  .cmpd-lod { font-size: 10px; padding-top: 10px; letter-spacing: 0.12em; }
+  .proc-num { font-size: 11px; }
+  .proc-num::before { width: 22px; margin-bottom: 8px; }
+  .proc-step h3 { font-size: 14.5px; margin-bottom: 5px; }
+  .proc-step p { font-size: 13px; line-height: 1.55; }
+  .acc-row { margin-top: 22px; gap: 8px; }
+  .acc-chip { font-size: 10.5px; padding: 9px 11px; letter-spacing: 0.12em; gap: 8px; }
+  .inst-photo figcaption { font-size: 10.5px; padding: 8px 12px; letter-spacing: 0.16em; }
+  .photo-note { font-size: 10.5px; }
+  .inst-cta { padding: 40px var(--gutter); }
+  .inst-cta h2 { font-size: 1.3rem; margin-bottom: 10px; }
+  .inst-cta p { font-size: 11px; letter-spacing: 0.16em; margin-bottom: 24px; }
+  .inst-cta .btn { padding: 14px 24px; }
 }
