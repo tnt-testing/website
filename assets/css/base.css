@@ -188,6 +188,7 @@ h1, h2, h3 {
 .reveal.d2 { transition-delay: 0.16s; }
 .reveal.d3 { transition-delay: 0.24s; }
 .reveal.d4 { transition-delay: 0.32s; }
+.reveal.d5 { transition-delay: 0.4s; }
 
 /* ---------- mobile compaction ---------- */
 @media (max-width: 680px) {
