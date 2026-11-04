@@ -193,12 +193,15 @@
       var fd = new FormData(form);
       var name = (fd.get("name") || "").toString().trim();
       var company = (fd.get("company") || "").toString().trim();
-      var contact = (fd.get("contact") || "").toString().trim();
+      var email = (fd.get("email") || "").toString().trim();
+      var phone = (fd.get("phone") || "").toString().trim();
 
       var payload = {
         name: name,
         company: company,
-        contact: contact,
+        email: email,
+        phone: phone,
+        contact: email,
         notes: (fd.get("notes") || "").toString().trim(),
         test: state.test.name + " (" + state.test.sub + ")",
         quantity: String(state.qty),
@@ -209,7 +212,7 @@
         _captcha: "false",
         _honey: ""
       };
-      if (contact.indexOf("@") !== -1) payload._replyto = contact;
+      if (email.indexOf("@") !== -1) payload._replyto = email;
 
       var showDone = function () {
         qdRef.textContent =
