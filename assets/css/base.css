@@ -1,0 +1,159 @@
+/* ============================================================
+   TNT — base.css
+   Reset · tokens · typography · shared primitives
+   ============================================================ */
+
+:root {
+  /* color */
+  --navy-950: #060D1B;
+  --navy-900: #0A1428;
+  --navy-800: #0D1B33;
+  --panel:    #101E38;
+  --line:     #1E2C47;
+  --line-soft:rgba(192, 198, 206, 0.12);
+  --white:    #F5F7FA;
+  --silver:   #C0C6CE;
+  --silver-dim:#8B93A0;
+  --gold:     #D4AF37;
+  --gold-2:   #C9A227;
+  --gold-soft:rgba(212, 175, 55, 0.14);
+  --gold-line:rgba(212, 175, 55, 0.32);
+
+  /* type */
+  --font-display: "Chakra Petch", "Space Grotesk", sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "IBM Plex Mono", monospace;
+
+  /* metrics */
+  --nav-h: 72px;
+  --max-w: 1360px;
+  --gutter: clamp(20px, 4vw, 56px);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
+  background: var(--navy-900);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, output { font: inherit; color: inherit; }
+section { scroll-margin-top: calc(var(--nav-h) + 8px); }
+::selection { background: var(--gold); color: var(--navy-950); }
+
+:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---------- shared primitives ---------- */
+
+/* display type */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* eyebrow / labels */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.9rem, 2.3vw, 2.1rem);
+  letter-spacing: 0.1em;
+  color: var(--silver);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+}
+.eyebrow .tick {
+  display: inline-block;
+  width: 22px; height: 1px;
+  background: var(--gold);
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 16px 30px;
+  border: 1px solid transparent;
+  transition: box-shadow 0.35s var(--ease-out),
+              background 0.35s var(--ease-out),
+              border-color 0.35s var(--ease-out),
+              transform 0.35s var(--ease-out),
+              color 0.35s var(--ease-out);
+  white-space: nowrap;
+}
+
+.btn-gold {
+  background: linear-gradient(180deg, #E3C35A, var(--gold-2));
+  color: var(--navy-950);
+  border-color: rgba(255, 235, 170, 0.55);
+  box-shadow: 0 0 0 rgba(212, 175, 55, 0);
+}
+.btn-gold:hover {
+  box-shadow: 0 0 26px rgba(212, 175, 55, 0.38), 0 0 60px rgba(212, 175, 55, 0.14);
+  transform: translateY(-1px);
+}
+.btn-gold:active { transform: translateY(0); }
+
+.btn-ghost {
+  color: var(--silver);
+  border-color: var(--line-soft);
+  background: rgba(16, 30, 56, 0.35);
+}
+.btn-ghost:hover {
+  color: var(--white);
+  border-color: var(--gold-line);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.12);
+}
+
+.btn-sm { padding: 12px 20px; font-size: 15px; }
+.btn-wide { padding: 18px 34px; }
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.reveal.in { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation-duration: 0.001s !important; animation-iteration-count: 1 !important; transition-duration: 0.001s !important; }
+}
