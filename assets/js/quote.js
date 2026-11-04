@@ -163,7 +163,7 @@
     }
 
     /* --- submit (Google Apps Script → lab inbox; FormSubmit fallback) --- */
-    var GOOGLE_ENDPOINT = ""; // ← paste deployed Apps Script /exec URL here
+    var GOOGLE_ENDPOINT = "https://script.google.com/macros/s/AKfycbw7elQFDUgqWh_5-dJkgcTD3K_EkP9K3s-hC6zuSW0NrokhfA68l-cvvII7aGFCtqbk/exec";
     var FS_ENDPOINT = "https://formsubmit.co/ajax/texas.nuclear.technologies@gmail.com";
     var formError = $("#formError");
 
