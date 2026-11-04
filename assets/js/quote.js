@@ -20,10 +20,14 @@
     tests: [
       { id: "oilgas",   name: "OIL & GAS IMPURITY",         sub: "ORBITRAP HRAM", fee: 1000 },
       { id: "unknown",  name: "UNKNOWN COMPOUND ID",        sub: "ORBITRAP HRAM", fee: 750  },
+      { id: "water",    name: "WATER & WASTEWATER",         sub: "ICP-MS",        fee: 180  },
+      { id: "pharma",   name: "PHARMA & SUPPLEMENTS",       sub: "LC-MS/MS",      fee: 400  },
+      { id: "soil",     name: "SOIL & DIRT",                sub: "ICP-MS",        fee: 180  },
       { id: "metals",   name: "HEAVY METALS",               sub: "ICP-MS",        fee: 200  },
       { id: "minerals", name: "MINERALS & NUTRIENTS",       sub: "ICP-MS",        fee: 200  },
       { id: "pfas",     name: "PESTICIDES · PFAS",          sub: "LC-MS/MS",      fee: 350  },
-      { id: "solvents", name: "SOLVENTS · VOCs · TERPENES", sub: "GC-MS",         fee: 250  }
+      { id: "solvents", name: "SOLVENTS · VOCs · TERPENES", sub: "GC-MS",         fee: 250  },
+      { id: "cosmetics",name: "COSMETICS & CARE",           sub: "GC-MS",         fee: 250  }
     ]
   };
 
