@@ -317,7 +317,17 @@
   .proc-step p { font-size: 13px; line-height: 1.55; }
   .acc-row { margin-top: 22px; gap: 8px; }
   .acc-chip { font-size: 10.5px; padding: 9px 11px; letter-spacing: 0.12em; gap: 8px; }
-  .inst-photo figcaption { font-size: 10.5px; padding: 8px 12px; letter-spacing: 0.16em; }
+  .inst-photo { aspect-ratio: auto; display: flex; flex-direction: column; }
+  .inst-photo img { height: auto; aspect-ratio: 4 / 3; }
+  .inst-photo::after { display: none; }
+  .inst-photo figcaption {
+    position: static;
+    font-size: 10.5px; padding: 8px 12px; letter-spacing: 0.12em;
+    white-space: nowrap; overflow: hidden;
+    border: 0; border-top: 1px solid var(--line-soft);
+    background: var(--navy-950);
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
   .photo-note { font-size: 10.5px; }
   .inst-cta { padding: 40px var(--gutter); }
   .inst-cta h2 { font-size: 1.3rem; margin-bottom: 10px; }

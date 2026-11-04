@@ -576,6 +576,19 @@
   .nav-word strong { font-size: 17px; }
   .mobile-menu a { font-size: 15px; padding: 13px 0; }
   .fac-c, .fac-d, .fac-e, .fac-f { grid-column: span 6; aspect-ratio: 4 / 3; }
+  .fac-item { aspect-ratio: auto; display: flex; flex-direction: column; }
+  .fac-item img { height: auto; aspect-ratio: 4 / 3; }
+  .fac-a img, .fac-b img { aspect-ratio: 16 / 10; }
+  .fac-item::after { display: none; }
+  .fac-item figcaption {
+    position: static;
+    font-size: 10px; letter-spacing: 0.1em;
+    padding: 8px 10px; gap: 8px;
+    white-space: nowrap; overflow: hidden;
+    border: 0; border-top: 1px solid var(--line-soft);
+    background: var(--navy-950);
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
   .hero { min-height: 0; padding-top: calc(var(--nav-h) + 34px); padding-bottom: 52px; }
   .hero-ctas .btn { flex: 1 1 100%; }
   .eyebrow { flex-wrap: wrap; justify-content: flex-start; row-gap: 12px; letter-spacing: 0.1em; }
@@ -592,7 +605,6 @@
   .sec-head h2 { font-size: 1.4rem; }
   .sec-idx { font-size: 12px; }
   .sec-tag { font-size: 11px; letter-spacing: 0.16em; }
-  .fac-item figcaption { font-size: 11px; letter-spacing: 0.14em; padding: 10px 14px; }
   .brandmark { padding-top: 64px; }
   .brand-contact { padding: 24px 18px; }
   .bc-label { font-size: 11px; }
