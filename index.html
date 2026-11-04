@@ -276,7 +276,7 @@
 
       <div class="console reveal" id="quoteModule">
         <div class="console-bar">
-          <span class="cb-title">LIVE QUOTE <em>//</em> PRICING ENGINE</span>
+          <span class="cb-title">ESTIMATE <em>//</em> PRICING ENGINE</span>
           <span class="cb-meta">REV 2.4 · USD · PER SAMPLE</span>
         </div>
 
@@ -318,10 +318,13 @@
               <div class="ro-shimmer" aria-hidden="true"></div>
               <div class="ro-rows">
                 <div class="ro-row"><span>TEST</span><b id="roTest">—</b></div>
+                <div class="ro-row"><span>METHOD</span><b id="roMethod">—</b></div>
                 <div class="ro-row"><span>UNIT FEE</span><b id="roUnit">—</b></div>
                 <div class="ro-row"><span>QTY</span><b id="roQty">—</b></div>
-                <div class="ro-row"><span>DISCOUNT</span><b id="roDisc">—</b></div>
-                <div class="ro-row"><span>MULTIPLIER</span><b id="roMult">×1.00</b></div>
+                <div class="ro-row"><span>SUBTOTAL</span><b id="roSubtotal">—</b></div>
+                <div class="ro-row"><span>VOL DISCOUNT</span><b id="roDisc">—</b></div>
+                <div class="ro-row"><span>RUSH SURCHARGE</span><b id="roMult">—</b></div>
+                <div class="ro-row"><span>TURNAROUND</span><b id="roTat">—</b></div>
               </div>
               <div class="ro-total">
                 <span>ESTIMATE</span>
@@ -348,9 +351,9 @@
               <span>EMAIL / PHONE</span>
               <input type="text" name="contact" autocomplete="email" required />
             </label>
-            <label class="qf-field">
-              <span>NOTES <i>(MATRIX, COUNT…)</i></span>
-              <input type="text" name="notes" />
+            <label class="qf-field qf-notes">
+              <span>NOTES <i>(MATRIX, SAMPLE DETAILS, SPECIAL HANDLING…)</i></span>
+              <textarea name="notes" rows="4" spellcheck="false"></textarea>
             </label>
           </div>
           <div class="qf-actions">

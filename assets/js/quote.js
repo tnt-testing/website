@@ -19,11 +19,11 @@
     ],
     tests: [
       { id: "oilgas",   name: "OIL & GAS IMPURITY",         sub: "ORBITRAP HRAM", fee: 1000 },
-      { id: "unknown",  name: "UNKNOWN COMPOUND ID",        sub: "ORBITRAP HRAM", fee: 600  },
-      { id: "metals",   name: "HEAVY METALS",               sub: "ICP-MS",        fee: 250  },
-      { id: "minerals", name: "MINERALS & NUTRIENTS",       sub: "ICP-MS",        fee: 250  },
-      { id: "pfas",     name: "PESTICIDES · PFAS",          sub: "LC-MS/MS",      fee: 300  },
-      { id: "solvents", name: "SOLVENTS · VOCs · TERPENES", sub: "GC-MS",         fee: 200  }
+      { id: "unknown",  name: "UNKNOWN COMPOUND ID",        sub: "ORBITRAP HRAM", fee: 750  },
+      { id: "metals",   name: "HEAVY METALS",               sub: "ICP-MS",        fee: 200  },
+      { id: "minerals", name: "MINERALS & NUTRIENTS",       sub: "ICP-MS",        fee: 200  },
+      { id: "pfas",     name: "PESTICIDES · PFAS",          sub: "LC-MS/MS",      fee: 350  },
+      { id: "solvents", name: "SOLVENTS · VOCs · TERPENES", sub: "GC-MS",         fee: 250  }
     ]
   };
 
@@ -56,10 +56,13 @@
         discHint = $("#discHint"),
         roScreen = $("#roScreen"),
         roTest   = $("#roTest"),
+        roMethod = $("#roMethod"),
         roUnit   = $("#roUnit"),
         roQty    = $("#roQty"),
+        roSubtotal = $("#roSubtotal"),
         roDisc   = $("#roDisc"),
         roMult   = $("#roMult"),
+        roTat    = $("#roTat"),
         roTotal  = $("#roTotal"),
         form     = $("#quoteForm"),
         done     = $("#quoteDone"),
@@ -149,10 +152,13 @@
     function render() {
       var r = compute();
       roTest.textContent = state.test.name;
+      roMethod.textContent = state.test.sub;
       roUnit.textContent = money(r.unit);
       roQty.textContent  = "× " + pad(state.qty);
+      roSubtotal.textContent = money(r.unit * state.qty);
       roDisc.textContent = r.disc > 0 ? "−" + Math.round(r.disc * 100) + "%" : "—";
-      roMult.textContent = "×" + r.mult.toFixed(2);
+      roMult.textContent = r.mult > 1 ? "+50%" : "—";
+      roTat.textContent = state.tat === "rush" ? "24 HR" : "48 HR";
       discHint.classList.toggle("active", r.disc > 0);
 
       // brief "analysis" shimmer + count-up
