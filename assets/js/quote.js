@@ -173,7 +173,7 @@
     }
 
     /* --- submit (Google Apps Script → lab inbox; FormSubmit fallback) --- */
-    var GOOGLE_ENDPOINT = "https://script.google.com/macros/s/AKfycbx1lvCfFMLedEXovPdlqlgMPQJGrrMBEiIF69Dma8AV3dXjyrjaRHtIbCiNiK3fbrJD/exec";
+    var GOOGLE_ENDPOINT = "https://script.google.com/macros/s/AKfycbxkbQmAwpDNOkrYvhp3xfjSLMXrpi4T4eBqJJm9VA6YbNzOPHFSjc0FglkG1DgCRmC7/exec";
     var FS_ENDPOINT = "https://formsubmit.co/ajax/texas.nuclear.technologies@gmail.com";
     var formError = $("#formError");
 
