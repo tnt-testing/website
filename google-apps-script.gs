@@ -18,7 +18,7 @@ var TZ = "America/Chicago";
 
 function doGet() {
   return ContentService
-    .createTextOutput(JSON.stringify({ status: "ok", service: "tnt-quote" }))
+    .createTextOutput(JSON.stringify({ status: "ok", service: "tnt-quote", version: 2 }))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
