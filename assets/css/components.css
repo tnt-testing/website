@@ -181,7 +181,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 18px;
-  padding: 15px 24px;
+  padding: 12px 24px;
   border-bottom: 1px solid var(--gold-line);
   background: linear-gradient(180deg, #0d0d0d, var(--navy-900));
   font-family: var(--font-body);
@@ -205,9 +205,16 @@
 }
 
 /* controls column */
-.qc { padding: 34px 30px 38px; }
-.qc-group { margin-bottom: 34px; }
+.qc { padding: 22px 24px 24px; }
+.qc-group { margin-bottom: 20px; }
 .qc-group:last-child { margin-bottom: 0; }
+.qc-row {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.qc-row .qc-group { margin-bottom: 0; }
 
 .qc-label {
   display: flex;
@@ -215,28 +222,32 @@
   gap: 10px;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 13.5px;
   letter-spacing: 0.16em;
   color: var(--ink-dim);
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 .qc-label span { color: var(--gold-2); font-size: 9px; }
 .qc-qty {
   margin-left: auto;
-  font-size: 21px;
+  font-size: 18px;
   color: var(--gold-2);
   letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
 }
 
 /* test-type option rows */
-.qc-tests { display: flex; flex-direction: column; gap: 8px; }
+.qc-tests {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
 .test-opt {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 14px;
-  padding: 13px 16px;
+  gap: 10px;
+  padding: 9px 12px;
   border: 1px solid var(--line-l);
   background: #ffffff;
   text-align: left;
@@ -245,24 +256,24 @@
 }
 .test-opt:hover { border-color: rgba(184, 143, 24, 0.55); }
 .test-opt .led {
-  width: 7px; height: 7px;
+  width: 6px; height: 6px;
   border: 1px solid var(--ink-dim);
   transform: rotate(45deg);
   transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 .test-opt .to-name {
-  font-size: 17.5px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   color: var(--ink);
 }
 .test-opt .to-name small {
   display: block;
-  font-size: 13.5px;
+  font-size: 10.5px;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: var(--ink-dim);
-  margin-top: 3px;
+  margin-top: 1px;
 }
 .test-opt .to-arrow {
   font-size: 18px;
@@ -324,10 +335,10 @@
   display: flex;
   justify-content: space-between;
   font-family: var(--font-body);
-  font-size: 13.5px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   color: var(--ink-dim);
-  padding: 6px 2px 0;
+  padding: 4px 2px 0;
 }
 /* turnaround segmented control */
 .qc-tat {
@@ -336,7 +347,7 @@
   border: 1px solid var(--line-l);
 }
 .tat-btn {
-  padding: 14px 10px;
+  padding: 10px 8px;
   background: #ffffff;
   border-right: 1px solid var(--line-l);
   transition: background 0.3s, box-shadow 0.3s;
@@ -345,7 +356,7 @@
 .tat-btn b {
   display: block;
   font-family: var(--font-body);
-  font-size: 16.5px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.12em;
   color: var(--ink-dim);
@@ -354,10 +365,10 @@
   display: block;
   font-family: var(--font-body);
   font-style: normal;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   color: var(--ink-dim);
-  margin-top: 5px;
+  margin-top: 3px;
 }
 .tat-btn.is-on {
   background: rgba(212, 175, 55, 0.1);
@@ -369,7 +380,7 @@
 /* readout column */
 .readout {
   border-left: 1px solid var(--line-l);
-  padding: 34px 30px 38px;
+  padding: 22px 24px 24px;
   display: flex;
 }
 .ro-screen {
@@ -380,7 +391,7 @@
     radial-gradient(120% 120% at 50% 0%, #141414, #060606 75%);
   border: 1px solid var(--line-soft);
   box-shadow: inset 0 0 60px rgba(3, 7, 15, 0.65);
-  padding: 26px 26px 22px;
+  padding: 18px 20px 14px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -408,12 +419,12 @@
   gap: 14px;
   border-bottom: 1px dashed rgba(192, 198, 206, 0.3);
   font-family: var(--font-body);
-  font-size: 15.5px;
+  font-size: 14px;
   letter-spacing: 0.08em;
 }
 .ro-row span {
   color: var(--silver-dim);
-  font-size: 13.5px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   flex-shrink: 0;
 }
@@ -429,18 +440,18 @@
   align-items: baseline;
   gap: 14px;
   margin-top: auto;
-  padding-top: 18px;
+  padding-top: 12px;
   border-top: 1px dashed rgba(212, 175, 55, 0.55);
   font-family: var(--font-body);
 }
 .ro-total span {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.2em;
   color: var(--silver-dim);
 }
 .ro-total b {
-  font-size: clamp(2rem, 3vw, 2.7rem);
+  font-size: clamp(1.7rem, 2.4vw, 2.2rem);
   font-weight: 700;
   color: var(--gold);
   letter-spacing: 0.02em;
@@ -448,9 +459,9 @@
   text-shadow: 0 0 34px rgba(212, 175, 55, 0.35);
 }
 .ro-note {
-  margin-top: 14px;
+  margin-top: 10px;
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--silver-dim);
   opacity: 0.75;
@@ -459,20 +470,20 @@
 /* request form */
 .quote-form {
   border-top: 1px solid var(--line-l);
-  padding: 30px 30px 38px;
+  padding: 18px 24px 22px;
 }
 .qf-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin-bottom: 26px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
 }
 .qf-notes { grid-column: 1 / -1; }
-.qf-field { display: flex; flex-direction: column; gap: 9px; }
+.qf-field { display: flex; flex-direction: column; gap: 6px; }
 .qf-field span {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   color: var(--ink-dim);
 }
@@ -480,9 +491,9 @@
 .qf-field input {
   background: #ffffff;
   border: 1px solid var(--line-l);
-  padding: 13px 14px;
+  padding: 10px 12px;
   font-family: var(--font-body);
-  font-size: 17.5px;
+  font-size: 15px;
   color: var(--ink);
   caret-color: var(--gold-2);
   transition: border-color 0.3s, box-shadow 0.3s;
@@ -490,13 +501,13 @@
 .qf-field textarea {
   background: #ffffff;
   border: 1px solid var(--line-l);
-  padding: 13px 14px;
+  padding: 10px 12px;
   font-family: var(--font-body);
-  font-size: 16.5px;
-  line-height: 1.55;
+  font-size: 14.5px;
+  line-height: 1.5;
   color: var(--ink);
   caret-color: var(--gold-2);
-  min-height: 118px;
+  min-height: 60px;
   resize: vertical;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -514,7 +525,7 @@
 .qf-actions {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 18px;
   flex-wrap: wrap;
 }
 .qf-fine {
@@ -621,36 +632,39 @@
   .test-card p { font-size: 13.5px; margin-bottom: 18px; }
   .tc-tag { font-size: 11.5px; padding-top: 12px; }
   .cb-title { font-size: 13.5px; }
-  .qc, .readout, .quote-form, .quote-done { padding-left: 20px; padding-right: 20px; }
-  .qc { padding-top: 24px; padding-bottom: 28px; }
-  .qc-group { margin-bottom: 24px; }
-  .qc-label { font-size: 12.5px; margin-bottom: 12px; }
+  .qc, .readout, .quote-form, .quote-done { padding-left: 18px; padding-right: 18px; }
+  .qc { padding-top: 20px; padding-bottom: 22px; }
+  .qc-group { margin-bottom: 18px; }
+  .qc-row { grid-template-columns: 1fr; gap: 18px; }
+  .qc-row .qc-group { margin-bottom: 0; }
+  .qc-tests { grid-template-columns: 1fr; }
+  .qc-label { font-size: 12.5px; margin-bottom: 10px; }
   .qc-qty { font-size: 16px; }
-  .test-opt { padding: 11px 13px; gap: 11px; }
+  .test-opt { padding: 10px 13px; gap: 11px; }
   .test-opt .to-name { font-size: 14px; }
-  .test-opt .to-name small { font-size: 11.5px; }
+  .test-opt .to-name small { font-size: 11px; }
   .test-opt .to-arrow { font-size: 14px; }
   .qc-scale { font-size: 11px; }
-  .tat-btn { padding: 11px 8px; }
+  .tat-btn { padding: 10px 8px; }
   .tat-btn b { font-size: 13px; }
-  .tat-btn em { font-size: 11.5px; }
-  .readout { padding-top: 24px; padding-bottom: 28px; }
-  .ro-screen { padding: 18px 18px 14px; }
+  .tat-btn em { font-size: 11px; }
+  .readout { padding-top: 20px; padding-bottom: 22px; }
+  .ro-screen { padding: 16px 16px 12px; }
   .ro-row { font-size: 13.5px; }
   .ro-row span { font-size: 11px; }
-  .ro-total { padding-top: 14px; }
-  .ro-total span { font-size: 12px; }
-  .ro-total b { font-size: 1.9rem; }
-  .ro-note { font-size: 10.5px; margin-top: 10px; }
-  .quote-form { padding-top: 22px; padding-bottom: 28px; }
-  .qf-field span { font-size: 11.5px; }
-  .qf-field input { font-size: 14.5px; padding: 11px 12px; }
-  .qf-field textarea { font-size: 14px; min-height: 92px; padding: 11px 12px; }
+  .ro-total { padding-top: 12px; }
+  .ro-total span { font-size: 11.5px; }
+  .ro-total b { font-size: 1.7rem; }
+  .ro-note { font-size: 10.5px; margin-top: 8px; }
+  .quote-form { padding-top: 18px; padding-bottom: 22px; }
+  .qf-field span { font-size: 11px; }
+  .qf-field input { font-size: 14px; padding: 10px 12px; }
+  .qf-field textarea { font-size: 14px; min-height: 76px; padding: 10px 12px; }
   .qf-fine { font-size: 11px; }
   .qf-error { font-size: 11px; }
   .qd-line { font-size: 14px; }
-  .quote-done { padding-top: 24px; padding-bottom: 30px; }
-  .console-bar { padding: 13px 18px; }
+  .quote-done { padding-top: 22px; padding-bottom: 26px; }
+  .console-bar { padding: 12px 18px; }
   .cb-meta { display: none; }
   .inst-cta { padding: 40px var(--gutter); }
   .inst-cta h2 { font-size: 1.3rem; margin-bottom: 10px; }
