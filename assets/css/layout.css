@@ -345,9 +345,7 @@
   border: 1px solid var(--line-soft);
   background: var(--panel);
 }
-.fac-a { grid-column: span 7; aspect-ratio: 16 / 9.6; }
-.fac-b { grid-column: span 5; aspect-ratio: 16 / 13.44; }
-.fac-c, .fac-d, .fac-e, .fac-f { grid-column: span 3; aspect-ratio: 4 / 3; }
+.fac-grid .fac-item { grid-column: span 6; aspect-ratio: 16 / 10; }
 
 .fac-item img {
   width: 100%; height: 100%;
@@ -548,9 +546,7 @@
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1080px) {
-  .fac-a, .fac-b { grid-column: span 12; }
-  .fac-b { aspect-ratio: 16 / 10; }
-  .fac-c, .fac-d, .fac-e, .fac-f { grid-column: span 6; }
+  .fac-grid .fac-item { grid-column: span 12; aspect-ratio: 16 / 10; }
 }
 
 @media (max-width: 1150px) {
@@ -580,10 +576,9 @@
   .nav-word em { display: none; }
   .nav-word strong { font-size: 17px; }
   .mobile-menu a { font-size: 15px; padding: 13px 0; }
-  .fac-c, .fac-d, .fac-e, .fac-f { grid-column: span 6; aspect-ratio: 4 / 3; }
+  .fac-grid .fac-item { grid-column: span 12; }
   .fac-item { aspect-ratio: auto; display: flex; flex-direction: column; }
-  .fac-item img { height: auto; aspect-ratio: 4 / 3; }
-  .fac-a img, .fac-b img { aspect-ratio: 16 / 10; }
+  .fac-item img { height: auto; aspect-ratio: 16 / 10; }
   .fac-item::after { display: none; }
   .fac-item figcaption {
     position: static;
