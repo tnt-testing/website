@@ -382,6 +382,11 @@
   border: 1px solid var(--line-soft);
   padding: 8px 14px;
 }
+.fac-link > a { display: block; cursor: pointer; }
+.fac-link:hover figcaption {
+  color: var(--gold);
+  border-color: var(--gold-line);
+}
 .fac-item figcaption span {
   color: var(--gold);
   padding-right: 12px;
