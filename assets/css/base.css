@@ -5,11 +5,11 @@
 
 :root {
   /* color */
-  --navy-950: #060D1B;
-  --navy-900: #0A1428;
-  --navy-800: #0D1B33;
-  --panel:    #101E38;
-  --line:     #1E2C47;
+  --navy-950: #050505;
+  --navy-900: #0B0B0B;
+  --navy-800: #111111;
+  --panel:    #151515;
+  --line:     #262626;
   --line-soft:rgba(192, 198, 206, 0.12);
   --white:    #F5F7FA;
   --silver:   #C0C6CE;
@@ -166,7 +166,7 @@ h1, h2, h3 {
 .btn-ghost {
   color: var(--silver);
   border-color: var(--line-soft);
-  background: rgba(16, 30, 56, 0.35);
+  background: rgba(16, 16, 16, 0.35);
 }
 .btn-ghost:hover {
   color: var(--white);

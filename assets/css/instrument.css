@@ -93,7 +93,7 @@
 .cmpd-card {
   position: relative;
   padding: 26px 22px 22px;
-  background: linear-gradient(180deg, rgba(30, 44, 71, 0.28), rgba(16, 30, 56, 0.55));
+  background: linear-gradient(180deg, rgba(30, 30, 30, 0.28), rgba(16, 16, 16, 0.55));
   border: 1px solid var(--line-soft);
   border-top: 1px solid rgba(192, 198, 206, 0.22);
   min-height: 190px;
@@ -220,7 +220,7 @@
 .inst-photo::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(10,20,40,0.18) 0%, transparent 40%, rgba(6, 13, 27, 0.82) 100%);
+  background: linear-gradient(180deg, rgba(10,10,10,0.18) 0%, transparent 40%, rgba(6, 6, 6, 0.82) 100%);
   pointer-events: none;
 }
 .inst-photo figcaption {
@@ -234,7 +234,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(6, 13, 27, 0.78);
+  background: rgba(6, 6, 6, 0.78);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   border: 1px solid var(--line-soft);
