@@ -1,73 +1,53 @@
 /* ============================================================
    TNT — quote.js
-   Live pricing engine (client-side, indicative estimates only)
+   Live quote request builder (client-side — no pricing shown;
+   every request is priced and confirmed by the lab desk).
    Isomorphic: contains no import/export tokens so it can be
    loaded as a classic script (file://) OR side-effect imported
-   as an ES module. All pricing data lives in PRICING below.
+   as an ES module.
    ============================================================ */
 
 (function () {
   "use strict";
 
-  /* ---------- PRICING CONFIG (edit here) ---------- */
-  var PRICING = {
-    currency: "USD",
-    rushMultiplier: 1.5,
-    volumeDiscounts: [
-      { min: 25, off: 0.10 },
-      { min: 10, off: 0.05 }
-    ],
-    tests: [
-      { id: "oilgas",   name: "OIL & GAS IMPURITY",         sub: "ORBITRAP HRAM", fee: 1000 },
-      { id: "unknown",  name: "UNKNOWN COMPOUND ID",        sub: "ORBITRAP HRAM", fee: 750  },
-      { id: "water",    name: "WATER & WASTEWATER",         sub: "ICP-MS",        fee: 180  },
-      { id: "pharma",   name: "PHARMA & SUPPLEMENTS",       sub: "LC-MS/MS",      fee: 400  },
-      { id: "soil",     name: "SOIL & DIRT",                sub: "ICP-MS",        fee: 180  },
-      { id: "metals",   name: "HEAVY METALS",               sub: "ICP-MS",        fee: 200  },
-      { id: "minerals", name: "MINERALS & NUTRIENTS",       sub: "ICP-MS",        fee: 200  },
-      { id: "pfas",     name: "PESTICIDES · PFAS",          sub: "LC-MS/MS",      fee: 350  },
-      { id: "solvents", name: "SOLVENTS · VOCs · TERPENES", sub: "GC-MS",         fee: 250  },
-      { id: "cosmetics",name: "COSMETICS & CARE",           sub: "GC-MS",         fee: 250  }
-    ]
-  };
+  /* ---------- CATALOG (edit here) ---------- */
+  var TESTS = [
+    { id: "oilgas",   name: "OIL & GAS IMPURITY",         sub: "ORBITRAP HRAM" },
+    { id: "unknown",  name: "UNKNOWN COMPOUND ID",        sub: "ORBITRAP HRAM" },
+    { id: "water",    name: "WATER & WASTEWATER",         sub: "ICP-MS"        },
+    { id: "pharma",   name: "PHARMA & SUPPLEMENTS",       sub: "LC-MS/MS"      },
+    { id: "soil",     name: "SOIL & DIRT",                sub: "ICP-MS"        },
+    { id: "metals",   name: "HEAVY METALS",               sub: "ICP-MS"        },
+    { id: "minerals", name: "MINERALS & NUTRIENTS",       sub: "ICP-MS"        },
+    { id: "pfas",     name: "PESTICIDES · PFAS",          sub: "LC-MS/MS"      },
+    { id: "solvents", name: "SOLVENTS · VOCs · TERPENES", sub: "GC-MS"         },
+    { id: "cosmetics",name: "COSMETICS & CARE",           sub: "GC-MS"         }
+  ];
 
-  var money = function (n) {
-    return "$" + Math.round(n).toLocaleString("en-US");
-  };
+  var TAT = { standard: "24–48 HR", rush: "< 24 HR" };
+
   var pad = function (n) {
     return n < 10 ? "0" + n : String(n);
   };
-
-  function discountFor(qty) {
-    for (var i = 0; i < PRICING.volumeDiscounts.length; i++) {
-      if (qty >= PRICING.volumeDiscounts[i].min) return PRICING.volumeDiscounts[i].off;
-    }
-    return 0;
-  }
 
   /* ---------- ENGINE ---------- */
   function initQuote(root) {
     if (!root || root.__tntBound) return;
     root.__tntBound = true;
 
-    var state = { test: PRICING.tests[0], qty: 1, tat: "standard", shown: 0 };
+    var state = { test: TESTS[0], qty: 1, tat: "standard" };
 
     var $ = function (sel) { return root.querySelector(sel); };
 
     var testBox  = $("#testOptions"),
         qtyRange = $("#qtyRange"),
         qtyOut   = $("#qtyOut"),
-        discHint = $("#discHint"),
         roScreen = $("#roScreen"),
         roTest   = $("#roTest"),
         roMethod = $("#roMethod"),
-        roUnit   = $("#roUnit"),
         roQty    = $("#roQty"),
-        roSubtotal = $("#roSubtotal"),
-        roDisc   = $("#roDisc"),
-        roMult   = $("#roMult"),
         roTat    = $("#roTat"),
-        roTotal  = $("#roTotal"),
+        roTatBig = $("#roTatBig"),
         form     = $("#quoteForm"),
         done     = $("#quoteDone"),
         submitBtn= $("#submitBtn"),
@@ -76,7 +56,7 @@
         qdEst    = $("#qdEst");
 
     /* --- build test selector --- */
-    PRICING.tests.forEach(function (t, i) {
+    TESTS.forEach(function (t, i) {
       var b = document.createElement("button");
       b.type = "button";
       b.className = "test-opt" + (i === 0 ? " is-on" : "");
@@ -86,7 +66,7 @@
       b.innerHTML =
         '<span class="led"></span>' +
         '<span class="to-name">' + t.name + "<small>" + t.sub + "</small></span>" +
-        '<span class="to-fee">' + money(t.fee) + "</span>";
+        '<span class="to-arrow">&rsaquo;</span>';
       b.addEventListener("click", function () {
         state.test = t;
         testBox.querySelectorAll(".test-opt").forEach(function (el) {
@@ -124,52 +104,18 @@
       });
     });
 
-    /* --- compute + render --- */
-    var raf = null;
-    function compute() {
-      var unit = state.test.fee;
-      var disc = discountFor(state.qty);
-      var mult = state.tat === "rush" ? PRICING.rushMultiplier : 1;
-      var total = unit * state.qty * mult * (1 - disc);
-      return { unit: unit, disc: disc, mult: mult, total: total };
-    }
-
-    function countUp(from, to) {
-      if (raf) cancelAnimationFrame(raf);
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        roTotal.textContent = money(to);
-        state.shown = to;
-        return;
-      }
-      var t0 = performance.now(), dur = 520;
-      var step = function (t) {
-        var p = Math.min((t - t0) / dur, 1);
-        var e = 1 - Math.pow(1 - p, 3); // ease-out cubic
-        var v = from + (to - from) * e;
-        roTotal.textContent = money(v);
-        if (p < 1) raf = requestAnimationFrame(step);
-        else state.shown = to;
-      };
-      raf = requestAnimationFrame(step);
-    }
-
+    /* --- render --- */
     function render() {
-      var r = compute();
       roTest.textContent = state.test.name;
       roMethod.textContent = state.test.sub;
-      roUnit.textContent = money(r.unit);
       roQty.textContent  = "× " + pad(state.qty);
-      roSubtotal.textContent = money(r.unit * state.qty);
-      roDisc.textContent = r.disc > 0 ? "−" + Math.round(r.disc * 100) + "%" : "—";
-      roMult.textContent = r.mult > 1 ? "+50%" : "—";
-      roTat.textContent = state.tat === "rush" ? "24 HR" : "48 HR";
-      discHint.classList.toggle("active", r.disc > 0);
+      roTat.textContent = TAT[state.tat];
+      roTatBig.textContent = TAT[state.tat];
 
-      // brief "analysis" shimmer + count-up
+      // brief "analysis" shimmer
       roScreen.classList.remove("computing");
       void roScreen.offsetWidth;
       roScreen.classList.add("computing");
-      countUp(state.shown, r.total);
     }
 
     /* --- submit (Google Apps Script → lab inbox; FormSubmit fallback) --- */
@@ -189,7 +135,6 @@
 
       submitBtn.classList.add("working");
       if (formError) formError.hidden = true;
-      var r = compute();
       var fd = new FormData(form);
       var name = (fd.get("name") || "").toString().trim();
       var company = (fd.get("company") || "").toString().trim();
@@ -205,8 +150,7 @@
         notes: (fd.get("notes") || "").toString().trim(),
         test: state.test.name + " (" + state.test.sub + ")",
         quantity: String(state.qty),
-        turnaround: state.tat === "rush" ? "RUSH — 24 HR" : "STANDARD — 48 HR",
-        estimate: money(r.total),
+        turnaround: state.tat === "rush" ? "RUSH — UNDER 24 HR" : "STANDARD — 24–48 HR",
         _subject: "TNT QUOTE REQUEST — " + name + " / " + company,
         _template: "table",
         _captcha: "false",
@@ -218,8 +162,8 @@
         qdRef.textContent =
           "TNT-" + Math.random().toString(36).slice(2, 7).toUpperCase();
         qdEst.textContent =
-          state.test.name + " ×" + state.qty +
-          (state.tat === "rush" ? " · RUSH" : "") + " — " + money(r.total);
+          state.test.name + " ×" + state.qty + " · " +
+          (state.tat === "rush" ? "RUSH <24 HR" : "24–48 HR");
         form.hidden = true;
         done.hidden = false;
         done.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -275,7 +219,7 @@
   }
 
   /* ---------- export surface + auto-boot ---------- */
-  window.TNT_QUOTE = { PRICING: PRICING, initQuote: initQuote };
+  window.TNT_QUOTE = { TESTS: TESTS, initQuote: initQuote };
 
   function boot() {
     initQuote(document.getElementById("quoteModule"));

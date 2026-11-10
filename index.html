@@ -272,8 +272,8 @@
 
       <div class="console reveal" id="quoteModule">
         <div class="console-bar">
-          <span class="cb-title">ESTIMATE <em>//</em> PRICING ENGINE</span>
-          <span class="cb-meta">REV 2.4 · USD · PER SAMPLE</span>
+          <span class="cb-title">REQUEST <em>//</em> QUOTE DESK</span>
+          <span class="cb-meta">24–48 HR · PRICED BY LAB</span>
         </div>
 
         <div class="console-body">
@@ -292,17 +292,16 @@
                   <span>01</span><span>10</span><span>25</span><span>50</span>
                 </div>
               </div>
-              <p class="qc-hint" id="discHint">VOL ≥10 −5% · ≥25 −10%</p>
             </div>
 
             <div class="qc-group">
               <p class="qc-label"><span>▸</span> TURNAROUND</p>
               <div class="qc-tat" role="radiogroup" aria-label="Turnaround">
                 <button type="button" class="tat-btn is-on" data-tat="standard" role="radio" aria-checked="true">
-                  <b>STANDARD</b><em>48 HR</em>
+                  <b>STANDARD</b><em>24–48 HR</em>
                 </button>
                 <button type="button" class="tat-btn" data-tat="rush" role="radio" aria-checked="false">
-                  <b>RUSH</b><em>24 HR ×1.5</em>
+                  <b>RUSH</b><em>&lt; 24 HR</em>
                 </button>
               </div>
             </div>
@@ -315,18 +314,14 @@
               <div class="ro-rows">
                 <div class="ro-row"><span>TEST</span><b id="roTest">—</b></div>
                 <div class="ro-row"><span>METHOD</span><b id="roMethod">—</b></div>
-                <div class="ro-row"><span>UNIT FEE</span><b id="roUnit">—</b></div>
                 <div class="ro-row"><span>QTY</span><b id="roQty">—</b></div>
-                <div class="ro-row"><span>SUBTOTAL</span><b id="roSubtotal">—</b></div>
-                <div class="ro-row"><span>VOL DISCOUNT</span><b id="roDisc">—</b></div>
-                <div class="ro-row"><span>RUSH SURCHARGE</span><b id="roMult">—</b></div>
                 <div class="ro-row"><span>TURNAROUND</span><b id="roTat">—</b></div>
               </div>
               <div class="ro-total">
-                <span>ESTIMATE</span>
-                <b id="roTotal">$0</b>
+                <span>RESULTS IN</span>
+                <b id="roTatBig">24–48 HR</b>
               </div>
-              <p class="ro-note">INDICATIVE · FINAL QUOTE CONFIRMED BY LAB</p>
+              <p class="ro-note">PRICED BY THE LAB — QUOTE WITHIN 1 BUSINESS HOUR</p>
             </div>
           </div>
         </div>
@@ -395,6 +390,13 @@
           </dl>
         </div>
       </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="inst-cta">
+      <h2 class="reveal">RESULTS IN 24 HOURS OR LESS</h2>
+      <p class="reveal d1">RUSH&nbsp;QUEUE&nbsp;·&nbsp;ANY&nbsp;MATRIX</p>
+      <a class="btn btn-gold reveal d2" href="#quote">GET A QUOTE</a>
     </section>
   </main>
 

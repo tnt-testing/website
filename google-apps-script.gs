@@ -59,7 +59,6 @@ function quoteTable(p, stamp) {
     row("TEST", p.test) +
     row("QUANTITY", p.quantity) +
     row("TURNAROUND", p.turnaround) +
-    row("ESTIMATE", p.estimate, { bold: true, size: "20px", bg: "#14233f" }) +
     row("NOTES", p.notes) +
     row("SUBMITTED", stamp) +
     '</table>';
@@ -67,7 +66,7 @@ function quoteTable(p, stamp) {
 
 function plainBody(p, stamp) {
   var keys = ["name", "company", "email", "phone", "test", "quantity",
-              "turnaround", "estimate", "notes"];
+              "turnaround", "notes"];
   var lines = ["NEW QUOTE REQUEST — tnt-testing.github.io/website", ""];
   keys.forEach(function (k) {
     if (p[k]) lines.push(k.toUpperCase() + ": " + p[k]);
