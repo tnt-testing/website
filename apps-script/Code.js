@@ -113,7 +113,7 @@ function createCheckoutSession(p) {
   var mode = "payment";
 
   var payload = {
-    ui_mode: "hosted",
+    ui_mode: "hosted_page",
     mode: mode,
     billing_address_collection: "auto",
     "phone_number_collection[enabled]": "true",
