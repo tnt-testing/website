@@ -240,8 +240,8 @@
   border-top: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
   background:
-    radial-gradient(90% 160% at 50% -40%, rgba(212, 175, 55, 0.05), transparent 60%),
-    var(--navy-800);
+    radial-gradient(90% 160% at 50% -40%, rgba(212, 175, 55, 0.06), transparent 60%),
+    #050505;
 }
 .stats-inner {
   max-width: var(--max-w);

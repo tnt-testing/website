@@ -19,6 +19,12 @@ var TZ = "America/Chicago";
 function doGet(e) {
   var p = (e && e.parameter) || {};
   if (p.action === "checkout" || p.action === "invoice") return checkoutJsonp(p);
+  if (p.action === "diag") {
+    var keys = PropertiesService.getScriptProperties().getKeys();
+    return ContentService
+      .createTextOutput(JSON.stringify({ keys: keys }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
   return ContentService
     .createTextOutput(JSON.stringify({ status: "ok", service: "tnt-quote", version: 2 }))
     .setMimeType(ContentService.MimeType.JSON);
@@ -88,8 +94,13 @@ function plainBody(p, stamp) {
  * ──────────────────────────────────────────────────────────────────── */
 var STRIPE_API = "https://api.stripe.com/v1/checkout/sessions";
 
+function stripeKey() {
+  var props = PropertiesService.getScriptProperties();
+  return props.getProperty("STRIPE_SECRET_KEY") || props.getProperty("stripe_key");
+}
+
 function createCheckoutSession(p) {
-  var key = PropertiesService.getScriptProperties().getProperty("STRIPE_SECRET_KEY");
+  var key = stripeKey();
   if (!key) return { success: false, error: "Stripe not configured" };
 
   // Variable pricing: amount in dollars, service = line-item description.
@@ -142,7 +153,7 @@ function createCheckoutSession(p) {
  * GET ?action=invoice&token=...&email=client@co.com&amount=1450&service=...
  * ──────────────────────────────────────────────────────────────────── */
 function stripePost(path, payload) {
-  var key = PropertiesService.getScriptProperties().getProperty("STRIPE_SECRET_KEY");
+  var key = stripeKey();
   var resp = UrlFetchApp.fetch("https://api.stripe.com/v1/" + path, {
     method: "post",
     payload: payload,
@@ -154,7 +165,7 @@ function stripePost(path, payload) {
 
 function createInvoice(p) {
   var props = PropertiesService.getScriptProperties();
-  if (!props.getProperty("STRIPE_SECRET_KEY"))
+  if (!stripeKey())
     return { success: false, error: "Stripe not configured" };
   // Optional staff gate: set INVOICE_TOKEN in Script Properties, then pass
   // &token=... on invoice requests. Blocks strangers from raising invoices.

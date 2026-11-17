@@ -12,7 +12,7 @@
 .test-card {
   position: relative;
   padding: 30px 22px 24px;
-  background: linear-gradient(180deg, rgba(30, 30, 30, 0.28), rgba(16, 16, 16, 0.55));
+  background: linear-gradient(180deg, #0a0a0c, #050505);
   border: 1px solid var(--line-soft);
   border-top: 1px solid rgba(192, 198, 206, 0.22);
   min-height: 218px;

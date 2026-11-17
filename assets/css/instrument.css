@@ -58,7 +58,7 @@
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid var(--line-soft);
   margin-top: clamp(44px, 5vw, 60px);
-  background: var(--panel);
+  background: #050505;
 }
 .kpi-stat {
   padding: 26px 24px;
@@ -93,7 +93,7 @@
 .cmpd-card {
   position: relative;
   padding: 26px 22px 22px;
-  background: linear-gradient(180deg, rgba(30, 30, 30, 0.28), rgba(16, 16, 16, 0.55));
+  background: linear-gradient(180deg, #0a0a0c, #050505);
   border: 1px solid var(--line-soft);
   border-top: 1px solid rgba(192, 198, 206, 0.22);
   min-height: 190px;
