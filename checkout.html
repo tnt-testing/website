@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pay Online — Texas Nuclear Technologies</title>
+  <meta name="description" content="Secure online payment for TNT analytical testing services via Stripe." />
+
+  <link rel="icon" type="image/jpeg" href="assets/img/logo-mark.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+<body>
+
+  <header class="nav" id="top">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html" aria-label="Texas Nuclear Technologies — home">
+        <span class="nav-word">
+          <strong>TNT</strong>
+          <em>ANALYTICAL&nbsp;LAB</em>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="icp-ms.html">ICP-MS</a>
+        <a href="lcms.html">LC-MS/MS</a>
+        <a href="orbitrap.html">ORBITRAP</a>
+        <a href="gcms.html">GC-MS</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-gold btn-sm" href="index.html#quote">GET A QUOTE</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section quote-sec">
+      <div class="sec-head">
+        <span class="sec-idx">$</span>
+        <h2>PAY ONLINE</h2>
+        <span class="sec-rule"></span>
+        <span class="sec-tag sec-tag-gold"><i class="pulse"></i>SECURE&nbsp;CHECKOUT</span>
+      </div>
+
+      <div class="console">
+        <div class="console-bar">
+          <span class="cb-title">PAYMENT <em>//</em> STRIPE SECURE CHECKOUT</span>
+          <span class="cb-meta">CARD · LINK · MORE</span>
+        </div>
+
+        <div class="console-body" style="padding:32px 24px;">
+          <div id="payStatus">
+            <p class="qc-label"><span>▸</span> PAYMENT DETAILS</p>
+            <form id="payForm" class="qf-grid" style="margin-bottom:20px;">
+              <label class="qf-field qf-notes">
+                <span>SERVICE / INVOICE DESCRIPTION</span>
+                <input type="text" name="service" id="fService"
+                       placeholder="e.g. ICP-MS heavy metals — 3 samples" />
+              </label>
+              <label class="qf-field">
+                <span>AMOUNT (USD)</span>
+                <input type="number" name="amount" id="fAmount" min="0.50"
+                       step="0.01" placeholder="0.00" required />
+              </label>
+              <label class="qf-field">
+                <span>INVOICE # <i>(OPTIONAL)</i></span>
+                <input type="text" name="invoice" id="fInvoice" placeholder="INV-0000" />
+              </label>
+            </form>
+            <button type="button" class="btn btn-gold btn-wide" id="payBtn">
+              <span>PROCEED TO SECURE PAYMENT</span>
+            </button>
+            <p class="qf-error" id="payError" hidden>
+              CHECKOUT UNAVAILABLE — CALL (972) 822-6494 OR EMAIL
+              TEXAS.NUCLEAR.TECHNOLOGIES@GMAIL.COM
+            </p>
+          </div>
+
+          <div id="payDone" hidden>
+            <div class="qd-term">
+              <p class="qd-line qd-gold">&gt; PAYMENT RECEIVED</p>
+              <p class="qd-line">&gt; SESSION: <b id="payRef">—</b></p>
+              <p class="qd-line">&gt; OUR LAB DESK WILL CONFIRM YOUR ORDER</p>
+            </div>
+            <a class="btn btn-ghost btn-sm" href="index.html">BACK TO SITE</a>
+          </div>
+
+          <div id="payCancelled" hidden>
+            <div class="qd-term">
+              <p class="qd-line">&gt; CHECKOUT CANCELLED — NO CHARGE MADE</p>
+            </div>
+            <button type="button" class="btn btn-ghost btn-sm" id="retryBtn">TRY AGAIN</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p>2101 GATEWAY DR<br /><span>IRVING, TX 75038</span></p>
+      </div>
+      <div class="footer-meta">
+        <a class="footer-mail" href="mailto:texas.nuclear.technologies@gmail.com">TEXAS.NUCLEAR.TECHNOLOGIES@GMAIL.COM</a>
+        <a class="footer-mail" href="tel:+19728226494">(972) 822-6494</a>
+        <p class="footer-copy">© 2025 TEXAS NUCLEAR TECHNOLOGIES</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var GOOGLE_ENDPOINT = "https://script.google.com/macros/s/AKfycbxkbQmAwpDNOkrYvhp3xfjSLMXrpi4T4eBqJJm9VA6YbNzOPHFSjc0FglkG1DgCRmC7/exec";
+
+      var status = document.getElementById("payStatus");
+      var done = document.getElementById("payDone");
+      var cancelled = document.getElementById("payCancelled");
+      var btn = document.getElementById("payBtn");
+      var err = document.getElementById("payError");
+      var q = new URLSearchParams(location.search);
+
+      /* pre-fill from payment link, e.g.
+         checkout.html?amount=1500&service=ICP-MS%20x3&invoice=INV-0042 */
+      if (q.get("service")) document.getElementById("fService").value = q.get("service");
+      if (q.get("amount"))  document.getElementById("fAmount").value  = q.get("amount");
+      if (q.get("invoice")) document.getElementById("fInvoice").value = q.get("invoice");
+
+      if (q.get("session_id")) {
+        status.hidden = true;
+        done.hidden = false;
+        document.getElementById("payRef").textContent = q.get("session_id").slice(0, 24) + "…";
+      } else if (q.get("cancelled")) {
+        status.hidden = true;
+        cancelled.hidden = false;
+      }
+      document.getElementById("retryBtn").addEventListener("click", function () {
+        cancelled.hidden = true;
+        status.hidden = false;
+      });
+
+      btn.addEventListener("click", function () {
+        var amount = parseFloat(document.getElementById("fAmount").value);
+        if (!amount || amount < 0.5) {
+          document.getElementById("fAmount").classList.add("err");
+          document.getElementById("fAmount").focus();
+          return;
+        }
+        var params = "action=checkout&amount=" + encodeURIComponent(amount.toFixed(2)) +
+          "&service=" + encodeURIComponent(document.getElementById("fService").value || "TNT analytical testing services");
+        var inv = document.getElementById("fInvoice").value.trim();
+        if (inv) params += "&invoice=" + encodeURIComponent(inv);
+        btn.classList.add("working");
+        err.hidden = true;
+        var cb = "tntCheckout" + Date.now();
+        var s = document.createElement("script");
+        var fail = window.setTimeout(function () {
+          cleanup(); btn.classList.remove("working"); err.hidden = false;
+        }, 12000);
+        function cleanup() { window.clearTimeout(fail); delete window[cb]; s.remove(); }
+        window[cb] = function (out) {
+          cleanup();
+          if (out && out.success && out.url) {
+            window.location.href = out.url;
+          } else {
+            btn.classList.remove("working");
+            err.hidden = false;
+          }
+        };
+        s.onerror = function () {
+          cleanup(); btn.classList.remove("working"); err.hidden = false;
+        };
+        s.src = GOOGLE_ENDPOINT + "?" + params + "&callback=" + cb;
+        document.body.appendChild(s);
+      });
+    })();
+  </script>
+</body>
+</html>
