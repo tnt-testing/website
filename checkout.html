@@ -14,6 +14,254 @@
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/layout.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
+
+  <style>
+    :root {
+      --pay-gold: #d4af37;
+      --pay-gold-soft: rgba(212, 175, 55, .14);
+      --pay-ink: #eef1f7;
+      --pay-dim: #98a2b8;
+      --pay-line: rgba(255, 255, 255, .08);
+    }
+
+    .pay-wrap {
+      min-height: calc(100vh - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(48px, 8vw, 90px) var(--gutter);
+      position: relative;
+    }
+    .pay-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(46% 40% at 50% 0%, rgba(212, 175, 55, .10), transparent 70%);
+      pointer-events: none;
+    }
+
+    .pay-card {
+      position: relative;
+      width: min(520px, 100%);
+      border-radius: 20px;
+      border: 1px solid var(--pay-line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015)),
+        #0b0d12;
+      box-shadow:
+        0 40px 80px rgba(0, 0, 0, .55),
+        inset 0 1px 0 rgba(255, 255, 255, .07);
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+    }
+    .pay-card::before {
+      content: "";
+      position: absolute; inset: 0 0 auto 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--pay-gold), transparent);
+      opacity: .8;
+    }
+
+    .pay-head {
+      padding: 30px 34px 0;
+      text-align: center;
+    }
+    .pay-logo {
+      width: 54px; height: 54px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid var(--pay-line);
+      box-shadow: 0 6px 18px rgba(0,0,0,.4);
+    }
+    .pay-head h1 {
+      font-family: var(--font-display, "Chakra Petch", sans-serif);
+      font-size: 22px;
+      letter-spacing: .18em;
+      color: var(--pay-ink);
+      margin: 18px 0 6px;
+    }
+    .pay-head p {
+      font-family: var(--font-mono, "JetBrains Mono", monospace);
+      font-size: 12px;
+      letter-spacing: .22em;
+      color: var(--pay-dim);
+      margin: 0;
+    }
+
+    .pay-body { padding: 26px 34px 34px; }
+
+    .pay-field { margin-bottom: 18px; }
+    .pay-field label {
+      display: block;
+      font-family: var(--font-mono, monospace);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .24em;
+      color: var(--pay-dim);
+      margin-bottom: 8px;
+    }
+    .pay-field input {
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--pay-line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 15px;
+      color: var(--pay-ink);
+      transition: border-color .25s, box-shadow .25s, background .25s;
+    }
+    .pay-field input::placeholder { color: #525c73; }
+    .pay-field input:focus {
+      outline: none;
+      border-color: var(--pay-gold);
+      background: rgba(212, 175, 55, .05);
+      box-shadow: 0 0 0 3px var(--pay-gold-soft);
+    }
+    .pay-field input.err { border-color: #e0705a; box-shadow: 0 0 0 3px rgba(224,112,90,.15); }
+
+    .pay-amount-wrap { position: relative; }
+    .pay-amount-wrap .usd {
+      position: absolute;
+      left: 16px; top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-mono, monospace);
+      font-size: 15px;
+      color: var(--pay-dim);
+      pointer-events: none;
+    }
+    .pay-amount-wrap input {
+      padding-left: 34px;
+      font-family: var(--font-mono, monospace);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .pay-chips {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .pay-chip {
+      border: 1px solid var(--pay-line);
+      background: rgba(255,255,255,.03);
+      color: var(--pay-dim);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-family: var(--font-mono, monospace);
+      font-size: 12px;
+      letter-spacing: .06em;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .pay-chip:hover {
+      border-color: var(--pay-gold);
+      color: var(--pay-gold);
+      background: var(--pay-gold-soft);
+    }
+
+    .pay-btn {
+      width: 100%;
+      margin-top: 8px;
+      border: 0;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: var(--font-display, "Chakra Petch", sans-serif);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      color: #0a0c10;
+      background: linear-gradient(180deg, #e8c95a, var(--pay-gold));
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(212, 175, 55, .22);
+      transition: transform .18s, box-shadow .18s, filter .18s;
+    }
+    .pay-btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+    .pay-btn:active { transform: translateY(0); }
+    .pay-btn.working { opacity: .65; pointer-events: none; }
+    .pay-btn.working::after {
+      content: "…";
+      animation: paydots 1s steps(3) infinite;
+    }
+    @keyframes paydots {
+      0% { content: ""; } 33% { content: "·"; } 66% { content: "··"; } 100% { content: "···"; }
+    }
+
+    .pay-secure {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+      font-family: var(--font-mono, monospace);
+      font-size: 11px;
+      letter-spacing: .18em;
+      color: var(--pay-dim);
+    }
+    .pay-secure svg { width: 13px; height: 13px; stroke: var(--pay-gold); }
+
+    .pay-error {
+      margin-top: 16px;
+      border: 1px dashed rgba(224, 112, 90, .6);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: var(--font-mono, monospace);
+      font-size: 11.5px;
+      letter-spacing: .1em;
+      color: #e89480;
+      text-align: center;
+    }
+
+    .pay-result { text-align: center; padding: 10px 0 4px; }
+    .pay-result .mark {
+      width: 58px; height: 58px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--pay-gold-soft);
+      border: 1px solid rgba(212,175,55,.4);
+    }
+    .pay-result .mark svg { width: 26px; height: 26px; stroke: var(--pay-gold); }
+    .pay-result h2 {
+      font-family: var(--font-display, sans-serif);
+      font-size: 19px;
+      letter-spacing: .16em;
+      color: var(--pay-ink);
+      margin: 0 0 8px;
+    }
+    .pay-result p {
+      font-family: var(--font-mono, monospace);
+      font-size: 12px;
+      letter-spacing: .1em;
+      color: var(--pay-dim);
+      margin: 4px 0;
+      word-break: break-all;
+    }
+    .pay-result .link-btn {
+      display: inline-block;
+      margin-top: 20px;
+      border: 1px solid var(--pay-line);
+      border-radius: 10px;
+      padding: 10px 22px;
+      font-family: var(--font-mono, monospace);
+      font-size: 12px;
+      letter-spacing: .16em;
+      color: var(--pay-dim);
+      background: transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .pay-result .link-btn:hover { color: var(--pay-ink); border-color: var(--pay-gold); }
+
+    .pay-brand {
+      text-align: center;
+      margin-top: 26px;
+      font-family: var(--font-mono, monospace);
+      font-size: 10.5px;
+      letter-spacing: .3em;
+      color: #4d5870;
+    }
+    .pay-brand b { color: var(--pay-gold); font-weight: 500; }
+  </style>
 </head>
 <body>
 
@@ -26,11 +274,11 @@
         </span>
       </a>
       <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">HOME</a>
         <a href="icp-ms.html">ICP-MS</a>
         <a href="lcms.html">LC-MS/MS</a>
         <a href="orbitrap.html">ORBITRAP</a>
         <a href="gcms.html">GC-MS</a>
-        <a href="checkout.html">PAY</a>
       </nav>
       <div class="nav-right">
         <a class="btn btn-gold btn-sm" href="index.html#quote">GET A QUOTE</a>
@@ -39,66 +287,89 @@
   </header>
 
   <main>
-    <section class="section quote-sec">
-      <div class="sec-head">
-        <span class="sec-idx">$</span>
-        <h2>PAY ONLINE</h2>
-        <span class="sec-rule"></span>
-        <span class="sec-tag sec-tag-gold"><i class="pulse"></i>SECURE&nbsp;CHECKOUT</span>
-      </div>
+    <div class="pay-wrap">
+      <div style="width:min(520px,100%);">
 
-      <div class="console">
-        <div class="console-bar">
-          <span class="cb-title">PAYMENT <em>//</em> STRIPE SECURE CHECKOUT</span>
-          <span class="cb-meta">CARD · LINK · MORE</span>
-        </div>
-
-        <div class="console-body" style="padding:32px 24px;">
+        <div class="pay-card">
+          <!-- form state -->
           <div id="payStatus">
-            <p class="qc-label"><span>▸</span> PAYMENT DETAILS</p>
-            <form id="payForm" class="qf-grid" style="margin-bottom:20px;">
-              <label class="qf-field qf-notes">
-                <span>SERVICE / INVOICE DESCRIPTION</span>
-                <input type="text" name="service" id="fService"
+            <div class="pay-head">
+              <img class="pay-logo" src="assets/img/logo-mark.jpg" alt="" />
+              <h1>SECURE&nbsp;PAYMENT</h1>
+              <p>TEXAS NUCLEAR TECHNOLOGIES</p>
+            </div>
+
+            <div class="pay-body">
+              <div class="pay-field">
+                <label for="fService">SERVICE / INVOICE DESCRIPTION</label>
+                <input type="text" id="fService"
                        placeholder="e.g. ICP-MS heavy metals — 3 samples" />
-              </label>
-              <label class="qf-field">
-                <span>AMOUNT (USD)</span>
-                <input type="number" name="amount" id="fAmount" min="0.50"
-                       step="0.01" placeholder="0.00" required />
-              </label>
-              <label class="qf-field">
-                <span>INVOICE # <i>(OPTIONAL)</i></span>
-                <input type="text" name="invoice" id="fInvoice" placeholder="INV-0000" />
-              </label>
-            </form>
-            <button type="button" class="btn btn-gold btn-wide" id="payBtn">
-              <span>PROCEED TO SECURE PAYMENT</span>
-            </button>
-            <p class="qf-error" id="payError" hidden>
-              CHECKOUT UNAVAILABLE — CALL (972) 822-6494 OR EMAIL
-              TEXAS.NUCLEAR.TECHNOLOGIES@GMAIL.COM
-            </p>
+              </div>
+
+              <div class="pay-field">
+                <label for="fAmount">AMOUNT</label>
+                <div class="pay-amount-wrap">
+                  <span class="usd">$</span>
+                  <input type="number" id="fAmount" min="0.50" step="0.01"
+                         placeholder="0.00" required />
+                </div>
+                <div class="pay-chips" id="payChips">
+                  <button type="button" class="pay-chip" data-amt="250">$250</button>
+                  <button type="button" class="pay-chip" data-amt="500">$500</button>
+                  <button type="button" class="pay-chip" data-amt="1000">$1,000</button>
+                  <button type="button" class="pay-chip" data-amt="2500">$2,500</button>
+                </div>
+              </div>
+
+              <div class="pay-field">
+                <label for="fInvoice">INVOICE #&nbsp;<span style="opacity:.5;letter-spacing:.1em;">(OPTIONAL)</span></label>
+                <input type="text" id="fInvoice" placeholder="INV-0000" />
+              </div>
+
+              <button type="button" class="pay-btn" id="payBtn">
+                PAY&nbsp;SECURELY
+              </button>
+
+              <div class="pay-secure">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                ENCRYPTED · POWERED BY STRIPE
+              </div>
+
+              <div class="pay-error" id="payError" hidden>
+                CHECKOUT UNAVAILABLE — CALL (972) 822-6494
+              </div>
+            </div>
           </div>
 
-          <div id="payDone" hidden>
-            <div class="qd-term">
-              <p class="qd-line qd-gold">&gt; PAYMENT RECEIVED</p>
-              <p class="qd-line">&gt; SESSION: <b id="payRef">—</b></p>
-              <p class="qd-line">&gt; OUR LAB DESK WILL CONFIRM YOUR ORDER</p>
+          <!-- paid state -->
+          <div class="pay-body" id="payDone" hidden>
+            <div class="pay-result">
+              <div class="mark">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
+              </div>
+              <h2>PAYMENT&nbsp;RECEIVED</h2>
+              <p id="payRef">—</p>
+              <p>OUR LAB DESK WILL CONFIRM YOUR ORDER</p>
+              <a class="link-btn" href="index.html">BACK TO SITE</a>
             </div>
-            <a class="btn btn-ghost btn-sm" href="index.html">BACK TO SITE</a>
           </div>
 
-          <div id="payCancelled" hidden>
-            <div class="qd-term">
-              <p class="qd-line">&gt; CHECKOUT CANCELLED — NO CHARGE MADE</p>
+          <!-- cancelled state -->
+          <div class="pay-body" id="payCancelled" hidden>
+            <div class="pay-result">
+              <div class="mark" style="background:rgba(224,112,90,.1);border-color:rgba(224,112,90,.4);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#e89480" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+              </div>
+              <h2>CHECKOUT&nbsp;CANCELLED</h2>
+              <p>NO CHARGE WAS MADE</p>
+              <button type="button" class="link-btn" id="retryBtn">TRY AGAIN</button>
             </div>
-            <button type="button" class="btn btn-ghost btn-sm" id="retryBtn">TRY AGAIN</button>
           </div>
         </div>
+
+        <p class="pay-brand">TNT&nbsp;<b>ANALYTICAL LAB</b>&nbsp;·&nbsp;IRVING,&nbsp;TX</p>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="footer">
@@ -123,18 +394,19 @@
       var cancelled = document.getElementById("payCancelled");
       var btn = document.getElementById("payBtn");
       var err = document.getElementById("payError");
+      var amtInput = document.getElementById("fAmount");
       var q = new URLSearchParams(location.search);
 
       /* pre-fill from payment link, e.g.
          checkout.html?amount=1500&service=ICP-MS%20x3&invoice=INV-0042 */
       if (q.get("service")) document.getElementById("fService").value = q.get("service");
-      if (q.get("amount"))  document.getElementById("fAmount").value  = q.get("amount");
+      if (q.get("amount"))  amtInput.value = q.get("amount");
       if (q.get("invoice")) document.getElementById("fInvoice").value = q.get("invoice");
 
       if (q.get("session_id")) {
         status.hidden = true;
         done.hidden = false;
-        document.getElementById("payRef").textContent = q.get("session_id").slice(0, 24) + "…";
+        document.getElementById("payRef").textContent = "SESSION " + q.get("session_id").slice(0, 24).toUpperCase() + "…";
       } else if (q.get("cancelled")) {
         status.hidden = true;
         cancelled.hidden = false;
@@ -144,11 +416,19 @@
         status.hidden = false;
       });
 
+      document.querySelectorAll(".pay-chip").forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          amtInput.value = chip.dataset.amt;
+          amtInput.classList.remove("err");
+          amtInput.focus();
+        });
+      });
+
       btn.addEventListener("click", function () {
-        var amount = parseFloat(document.getElementById("fAmount").value);
+        var amount = parseFloat(amtInput.value);
         if (!amount || amount < 0.5) {
-          document.getElementById("fAmount").classList.add("err");
-          document.getElementById("fAmount").focus();
+          amtInput.classList.add("err");
+          amtInput.focus();
           return;
         }
         var params = "action=checkout&amount=" + encodeURIComponent(amount.toFixed(2)) +
