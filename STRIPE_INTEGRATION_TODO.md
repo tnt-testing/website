@@ -33,7 +33,7 @@ These parameters were configured in Checkout Studio and are already set correctl
 
 | Parameter | Value |
 |-----------|-------|
-| ui_mode | `hosted` (REST API value; SDKs ≥21.0.0 call this `hosted_page`) |
+| ui_mode | `hosted_page` |
 | billing_address_collection | `auto` |
 | phone_number_collection.enabled | `true` |
 | automatic_tax.enabled | `false` |
