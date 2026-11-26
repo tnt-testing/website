@@ -205,3 +205,35 @@ h1, h2, h3 { letter-spacing: 0.02em; }
 /* ---- footer contact button ---- */
 .footer-contact { margin-top: 10px; }
 .footer-contact .contact-fab { position: static; display: inline-block; box-shadow: none; }
+
+
+/* ============================================================
+   LIGHT ENTERPRISE THEME — redeclares base vars (loaded last)
+   ============================================================ */
+:root {
+  --navy-950: #EDEAE0;
+  --navy-900: #F7F5EC;
+  --navy-800: #FFFFFF;
+  --panel:    #FFFFFF;
+  --line:     #DCD5C2;
+  --line-soft:rgba(23,24,28,.14);
+  --white:    #1B1C21;
+  --silver:   #3E4148;
+  --silver-dim:#6E6A5E;
+  --gold:     #8A6E35;
+  --gold-2:   #B08D46;
+  --gold-soft:rgba(138,110,53,.12);
+  --gold-line:rgba(138,110,53,.45);
+}
+::selection { background: var(--gold); color: #fff; }
+.btn-gold { color: #17181C !important; }
+.nav { background: rgba(247,245,236,.92); }
+.hero-sub, .hero-tag, .eyebrow, .hero-content { color: #F5F3EA; }
+.inst-cta { background: #17181C; }
+.inst-cta h2, .inst-cta p { color: #F5F3EA; }
+.test-card, .stat, .console, .brandmark { }
+.footer { background: #17181C; }
+.footer * { color: #C9C2B0; }
+.footer a:hover { color: #D4AF37; }
+.tat-btn.is-on, .btn-ghost { border-color: var(--gold); }
+input, textarea, select { color-scheme: light; }
