@@ -2,8 +2,8 @@
 (function () {
   "use strict";
 
-  var FS_ENDPOINT = "https://formsubmit.co/ajax/texas.nuclear.technologies@gmail.com";
-  var MAIL = "texas.nuclear.technologies@gmail.com";
+  var FS_ENDPOINT = "https://formsubmit.co/ajax/quotes@tnt-labs.com";
+  var MAIL = "quotes@tnt-labs.com";
 
   function build() {
     var fab = document.createElement("button");

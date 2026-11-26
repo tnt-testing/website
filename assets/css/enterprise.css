@@ -511,3 +511,10 @@ main .section { padding-top: 96px; padding-bottom: 96px; }
   color: var(--silver);
 }
 @media (max-width: 720px) { .def-grid { grid-template-columns: 1fr; } }
+
+/* ---- brandmark inner panel is light: dark text inside ---- */
+.brand-contact .bc-label { color: #8A6E35 !important; }
+.brand-contact .bc-title { color: #1B1C21 !important; }
+.brand-contact .bc-row dt { color: #6E6A5E !important; }
+.brand-contact .bc-row dd { color: #1B1C21 !important; }
+.brand-contact .bc-row a { color: #8A6E35 !important; }
