@@ -1,0 +1,207 @@
+/* ============================================================
+   TNT — Enterprise tightening layer (loaded LAST, overrides theme)
+   Smaller type, stricter grid, KPI cards, matrix cards, modal.
+   ============================================================ */
+
+:root {
+  --ent-ink: #17181c;
+  --ent-gold: #b08d46;
+  --ent-gold-dim: #8a6e35;
+  --ent-line: #d9d2c2;
+  --ent-card: #faf7f0;
+}
+
+/* ---- global type tightening ---- */
+html { font-size: 15px; }
+body { font-size: 0.92rem; line-height: 1.55; letter-spacing: 0.01em; }
+h1, h2, h3 { letter-spacing: 0.02em; }
+
+.hero-title { font-size: clamp(1.9rem, 4.4vw, 3.4rem) !important; line-height: 1.04 !important; }
+.hero-tag   { font-size: 0.78rem !important; }
+.hero-sub   { font-size: 0.95rem !important; max-width: 560px; }
+.section h2 { font-size: 1.35rem; }
+.sec-head h2 { letter-spacing: 0.14em; }
+
+/* ---- KPI strip (instrument pages already use .kpi-stat — tighten) ---- */
+.kpi-strip { gap: 10px; }
+.kpi-stat b { font-size: 1.5rem !important; }
+.kpi-stat span { font-size: 0.62rem !important; letter-spacing: 0.22em; }
+
+/* ---- index KPI band ---- */
+.kpi-band {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1px;
+  background: var(--ent-line);
+  border: 1px solid var(--ent-line);
+  margin-top: 26px;
+}
+.kpi-card {
+  background: var(--ent-card);
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.kpi-card b {
+  font-family: "Chakra Petch", monospace;
+  font-size: 1.6rem;
+  color: var(--ent-gold-dim);
+  line-height: 1;
+}
+.kpi-card span {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--ent-ink);
+  opacity: 0.75;
+}
+
+/* ---- matrix cards (replaces equipment photos on index) ---- */
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 14px;
+}
+.matrix-card {
+  position: relative;
+  background: var(--ent-card);
+  border: 1px solid var(--ent-line);
+  border-top: 3px solid var(--ent-gold);
+  padding: 0 16px 14px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.matrix-card:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(23,24,28,.10); }
+.matrix-card .mx-img {
+  display: block;
+  width: calc(100% + 32px);
+  margin: 0 -16px 12px;
+  height: 130px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--ent-line);
+}
+.matrix-card .mx-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  color: var(--ent-gold-dim);
+}
+.matrix-card h3 {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  margin: 6px 0 6px;
+  color: var(--ent-ink);
+}
+.matrix-card p {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #4a4a45;
+  margin: 0 0 10px;
+}
+.matrix-card .mx-kpi {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--ent-gold-dim);
+  border-top: 1px solid var(--ent-line);
+  padding-top: 8px;
+  display: block;
+}
+
+/* ---- floating contact button ---- */
+.contact-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 900;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  padding: 13px 20px;
+  background: var(--ent-ink);
+  color: #f1e9d5;
+  border: 1px solid var(--ent-gold);
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+.contact-fab:hover { background: var(--ent-gold-dim); }
+
+/* ---- contact modal ---- */
+.tnt-modal {
+  position: fixed; inset: 0; z-index: 1000;
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.tnt-modal.open { display: flex; }
+.tnt-modal-back {
+  position: absolute; inset: 0;
+  background: rgba(12,12,14,.72); backdrop-filter: blur(3px);
+}
+.tnt-modal-card {
+  position: relative;
+  width: min(560px, 96vw);
+  max-height: 92vh; overflow-y: auto;
+  background: #fbf7ee;
+  border: 1px solid var(--ent-gold);
+  box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+.tnt-modal-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 22px;
+  background: var(--ent-ink); color: #f1e9d5;
+}
+.tnt-modal-head b {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 0.85rem; letter-spacing: 0.18em;
+}
+.tnt-modal-x {
+  background: none; border: 1px solid var(--ent-gold); color: #f1e9d5;
+  font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
+  width: 30px; height: 30px; cursor: pointer; line-height: 1;
+}
+.tnt-modal-x:hover { background: var(--ent-gold-dim); }
+.tnt-modal-body { padding: 22px; }
+.tnt-modal-body .mm-note {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem; letter-spacing: 0.14em; color: #6b665a;
+  margin: 0 0 16px;
+}
+.mm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.mm-field { display: flex; flex-direction: column; gap: 5px; }
+.mm-field.full { grid-column: 1 / -1; }
+.mm-field span {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.58rem; letter-spacing: 0.2em; color: #6b665a;
+}
+.mm-field input, .mm-field select, .mm-field textarea {
+  font: inherit; font-size: 0.85rem;
+  padding: 9px 11px;
+  background: #fff;
+  border: 1px solid var(--ent-line);
+  color: var(--ent-ink);
+}
+.mm-field input:focus, .mm-field select:focus, .mm-field textarea:focus {
+  outline: 1px solid var(--ent-gold);
+}
+.mm-submit {
+  margin-top: 16px; width: 100%;
+  padding: 13px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem; letter-spacing: 0.22em;
+  background: var(--ent-gold); color: #17181c;
+  border: none; cursor: pointer; font-weight: 700;
+}
+.mm-submit:hover { background: var(--ent-gold-dim); color: #fbf7ee; }
+.mm-done {
+  padding: 34px 22px; text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem; letter-spacing: 0.14em; line-height: 2;
+  color: var(--ent-ink);
+}
+.mm-done b { color: var(--ent-gold-dim); font-size: 0.9rem; }
+@media (max-width: 520px) { .mm-grid { grid-template-columns: 1fr; } }
+
+/* ---- footer contact button ---- */
+.footer-contact { margin-top: 10px; }
+.footer-contact .contact-fab { position: static; display: inline-block; box-shadow: none; }
