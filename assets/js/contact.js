@@ -57,6 +57,14 @@
     function open() { modal.classList.add("open"); document.body.style.overflow = "hidden"; }
     function close() { modal.classList.remove("open"); document.body.style.overflow = ""; }
 
+    var pre = document.body.getAttribute("data-sample");
+    if (pre) {
+      var sel = form.querySelector('select[name="sample_type"]');
+      if (sel) { for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].text === pre) { sel.value = sel.options[i].text || sel.options[i].value; sel.selectedIndex = i; break; }
+      } }
+    }
+    window.tntContact = open;
     fab.addEventListener("click", open);
     modal.querySelector(".tnt-modal-back").addEventListener("click", close);
     modal.querySelector(".tnt-modal-x").addEventListener("click", close);

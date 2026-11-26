@@ -286,3 +286,22 @@ a.svc-card, .svc-card { display: block; }
 .brandmark * { color: #E8E1CE; }
 .bc-row a { color: #D4AF37; }
 .test-card { background: #fff; }
+
+/* ---- footer nav + mobile polish ---- */
+.footer-nav { margin-bottom: 8px; }
+.footer-nav a { color: #C9C2B0; text-decoration: none; font-size: .72rem; letter-spacing: .14em; }
+.footer-nav a:hover { color: #D4AF37; }
+
+/* cards without images need top padding back */
+.matrix-card:not(:has(.mx-img)) { padding-top: 16px; }
+
+/* faq proc steps keep readable width */
+#faq .proc-list { max-width: 900px; }
+
+@media (max-width: 640px) {
+  .matrix-card .mx-img { height: 104px; }
+  .tnt-modal-card { max-height: 96vh; }
+  .contact-fab { right: 14px; bottom: 14px; padding: 11px 15px; }
+  main .section { padding-top: 56px; padding-bottom: 56px; }
+  .mm-grid { grid-template-columns: 1fr; }
+}
