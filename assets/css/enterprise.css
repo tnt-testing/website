@@ -458,3 +458,21 @@ main .section { padding-top: 96px; padding-bottom: 96px; }
 .btn-gold:hover { background: #8A6E35 !important; color: #FBF7EE !important; }
 .btn-gold.btn-sm { padding: 9px 16px; font-size: .66rem; }
 .btn-ghost { padding: 13px 26px; font-size: .72rem; letter-spacing: .2em; }
+
+/* ---- font swap: modern high-end sans, no code fonts ---- */
+:root {
+  --font-display: "Manrope", "Inter", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "Inter", system-ui, sans-serif;
+}
+/* labels that were mono get weight + tracking instead of a code face */
+.mx-num, .mx-kpi, .tc-tag, .cmpd-lod, .stat-label, .kpi-stat span,
+.dd-head, .proc-num, .sec-idx, .sec-tag, .inst-id, .qc-label,
+.footer-nav a, .eyebrow, .bc-label, .btn, .contact-fab,
+.mm-field span, .mm-note, .mm-done, .cb-title, .cb-meta, .ro-note,
+.tat-btn b, .tat-btn em, .qf-fine, .qf-error {
+  font-family: "Inter", system-ui, sans-serif !important;
+  font-weight: 700;
+}
+.sec-tag, .mx-kpi, .dd-head { font-weight: 700; }
+.hero-title, .inst-name { letter-spacing: 0.04em; }
