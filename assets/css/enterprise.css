@@ -442,3 +442,19 @@ main .section { padding-top: 96px; padding-bottom: 96px; }
   position: absolute;
   left: 0;
 }
+
+/* restore filled gold buttons on light theme */
+.btn { display: inline-block; text-decoration: none; }
+.btn-gold {
+  background: #B08D46 !important;
+  color: #17181C !important;
+  padding: 13px 26px;
+  border: 1px solid #8A6E35;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .72rem;
+  letter-spacing: .2em;
+  font-weight: 700;
+}
+.btn-gold:hover { background: #8A6E35 !important; color: #FBF7EE !important; }
+.btn-gold.btn-sm { padding: 9px 16px; font-size: .66rem; }
+.btn-ghost { padding: 13px 26px; font-size: .72rem; letter-spacing: .2em; }
