@@ -354,3 +354,58 @@ body { font-size: .92rem; }
 .stat-label, .kpi-stat span { font-size: .6rem; }
 .bc-title { font-size: 1.5rem; }
 .inst-cta h2 { font-size: 1.4rem; }
+
+/* ============================================================
+   READABILITY OVERHAUL — dark hero bands, bigger type, spacing
+   ============================================================ */
+
+/* inner-page hero: dark band so titles are always readable */
+.inst-hero {
+  background: #17181C;
+  padding: 96px var(--gutter) 64px;
+  position: relative;
+  z-index: 2;
+}
+.inst-hero * { color: #EDE6D3; }
+.inst-hero .inst-id { color: #B0A88F; }
+.inst-hero .inst-name { color: #F4EFDD; margin: 12px 0 14px; }
+.inst-hero .inst-type { color: #B08D46; }
+.inst-hero .inst-role { color: #CFC8B4; max-width: 640px; }
+.inst-hero .kpi-stat { border-color: rgba(176,141,70,.4); background: rgba(255,255,255,.03); }
+.inst-hero .kpi-stat b { color: #B08D46; }
+.inst-hero .kpi-stat span { color: #9C947F; }
+
+/* home hero: tighter + stat band solid */
+.hero { min-height: 62vh; }
+.hero-content { padding-bottom: 72px; }
+.stats { position: relative; z-index: 2; background: #17181C; padding: 28px 0; }
+.stats .stat-num { font-size: 1.9rem; }
+.stats .stat-label { letter-spacing: .22em; }
+
+/* LARGER TYPE THROUGHOUT */
+body { font-size: 1rem; }
+.section h2, .sec-head h2 { font-size: 1.6rem; }
+.sec-idx { font-size: .8rem; }
+.sec-tag { font-size: .68rem; }
+.matrix-card h3, .test-card h3 { font-size: 1.05rem; }
+.matrix-card p, .test-card p, .proc-step p { font-size: .92rem; line-height: 1.65; }
+.matrix-card .mx-num, .mx-kpi, .tc-tag, .cmpd-lod { font-size: .68rem; }
+.proc-step h3 { font-size: 1rem; }
+.proc-num { font-size: .66rem; }
+.hero-sub { font-size: 1.05rem !important; max-width: 640px; }
+.inst-name { font-size: clamp(2.1rem, 4.6vw, 3.2rem); }
+.inst-type { font-size: .8rem; }
+.inst-role { font-size: 1rem; }
+.kpi-stat b { font-size: 1.7rem !important; }
+.kpi-stat span { font-size: .66rem !important; }
+.bc-title { font-size: 1.7rem; }
+.inst-cta h2 { font-size: 1.6rem; }
+.inst-cta p { font-size: .85rem; }
+.nav-links a, .dd-menu a { font-size: .78rem; }
+.eyebrow { font-size: .78rem; }
+
+/* spacing rhythm */
+main .section { padding-top: 96px; padding-bottom: 96px; }
+.test-grid, .matrix-grid { gap: 20px; }
+.proc-list .proc-step { padding: 22px 0; }
+.sec-head { margin-bottom: 44px; }
