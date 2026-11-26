@@ -24,7 +24,7 @@
     { id: "cosmetics",name: "COSMETICS & CARE",           sub: "GC-MS"         }
   ];
 
-  var TAT = { standard: "24–48 HR", rush: "< 24 HR" };
+  var TAT = { standard: "24–72 HR", rush: "< 24 HR" };
 
   var pad = function (n) {
     return n < 10 ? "0" + n : String(n);
@@ -150,7 +150,7 @@
         notes: (fd.get("notes") || "").toString().trim(),
         test: state.test.name + " (" + state.test.sub + ")",
         quantity: String(state.qty),
-        turnaround: state.tat === "rush" ? "RUSH — UNDER 24 HR" : "STANDARD — 24–48 HR",
+        turnaround: state.tat === "rush" ? "RUSH — UNDER 24 HR" : "STANDARD — 24–72 HR",
         _subject: "TNT QUOTE REQUEST — " + name + " / " + company,
         _template: "table",
         _captcha: "false",
@@ -163,7 +163,7 @@
           "TNT-" + Math.random().toString(36).slice(2, 7).toUpperCase();
         qdEst.textContent =
           state.test.name + " ×" + state.qty + " · " +
-          (state.tat === "rush" ? "RUSH <24 HR" : "24–48 HR");
+          (state.tat === "rush" ? "RUSH <24 HR" : "24–72 HR");
         form.hidden = true;
         done.hidden = false;
         done.scrollIntoView({ behavior: "smooth", block: "nearest" });
