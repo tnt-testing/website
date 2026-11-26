@@ -35,16 +35,27 @@
       </a>
 
       <nav class="nav-links" aria-label="Primary">
-        <a href="icp-ms.html">ICP-MS</a>
-        <a href="lcms.html">LC-MS/MS</a>
-        <a href="orbitrap.html">ORBITRAP</a>
-        <a href="gcms.html">GC-MS</a>
-        <a href="services.html">SERVICES</a>
+        <div class="nav-dd"><a href="services.html" class="dd-btn">SERVICES <span class="dd-caret">▾</span></a>
+          <div class="dd-menu">
+            <p class="dd-head">TEST MENU</p>
+            <a href="services.html">ALL SERVICES</a>
+            <p class="dd-head">INSTRUMENTS</p>
+            <a href="icp-ms.html">ICP-MS</a>
+            <a href="lcms.html">LC-MS/MS</a>
+            <a href="orbitrap.html">ORBITRAP</a>
+            <a href="gcms.html">GC-MS</a>
+            <p class="dd-head">BY PRODUCT</p>
+            <a href="matrix-supplements.html">SUPPLEMENTS</a>
+            <a href="matrix-food.html">FOOD</a>
+            <a href="matrix-cosmetics.html">COSMETICS</a>
+            <a href="matrix-pharma.html">PHARMA</a>
+          </div>
+        </div>
     <a href="checkout.html">PAY</a>
       </nav>
 
       <div class="nav-right">
-        <a class="btn btn-gold btn-sm" href="#quote">GET A QUOTE</a>
+        <a class="btn btn-gold" href="javascript:void(0)" onclick="window.tntContact&&window.tntContact()>GET A QUOTE</a>
         <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
           <span></span><span></span>
         </button>
@@ -80,12 +91,11 @@
 
       <div class="hero-content">
         <p class="eyebrow eyebrow-brand reveal"><span class="tick"></span><span class="eb-text">TEXAS&nbsp;NUCLEAR&nbsp;TECHNOLOGIES</span><span class="tick"></span></p>
-        <p class="hero-tag reveal d2">IMPURITIES &amp; PURITY — KNOWN &amp; UNKNOWN</p>
-        <p class="hero-sub reveal d2">HRAM non-target screening, metals, solvents and regulated panels — supplement to soil, crude to capsule. Standard 24–48 hr turnaround; rush available.</p>
+        <p class="hero-tag reveal d2">FULL-SERVICE ANALYTICAL TESTING — DFW</p>
+        <p class="hero-sub reveal d2">Seven departments — metals, volatiles, organics, unknown identification, microbiology, nutrition and stability — across supplement to soil, crude to capsule. Standard 24–48 hr turnaround; rush available.</p>
         <div class="hero-ctas reveal d3">
-          <a class="btn btn-gold" href="#quote">GET A QUOTE</a>
-          <a class="btn btn-ghost" href="#tests">EXPLORE THE LAB</a>
-        </div>
+          <a class="btn btn-gold" href="javascript:void(0)" onclick="window.tntContact&&window.tntContact()>GET A QUOTE</a>
+          </div>
       </div>
     </section>
 
@@ -296,120 +306,6 @@
         <div class="proc-step reveal"><span class="proc-num">Q5</span><div><h3>CAN YOU HANDLE WORK OUTSIDE THE STANDARD MENU?</h3><p>Yes — specialty and regulated scope is quoted at intake. Full-service coordination means you never manage multiple laboratories.</p></div></div>
       </div>
     </section>
-
-    <!-- ============ LIVE QUOTE ============ -->
-    <section class="section quote-sec" id="quote">
-      <div class="sec-head reveal">
-        <span class="sec-idx">05</span>
-        <h2>LIVE QUOTE</h2>
-        <span class="sec-rule"></span>
-        <span class="sec-tag sec-tag-gold"><i class="pulse"></i>ENGINE&nbsp;ONLINE</span>
-      </div>
-
-      <div class="console reveal" id="quoteModule">
-        <div class="console-bar">
-          <span class="cb-title">REQUEST <em>//</em> QUOTE DESK</span>
-          <span class="cb-meta">24–48 HR · PRICED BY LAB</span>
-        </div>
-
-        <div class="console-body">
-          <!-- Controls -->
-          <div class="qc">
-            <div class="qc-group">
-              <p class="qc-label"><span>▸</span> TEST TYPE</p>
-              <div class="qc-tests" id="testOptions" role="radiogroup" aria-label="Test type"><!-- injected --></div>
-            </div>
-
-            <div class="qc-row">
-            <div class="qc-group">
-              <p class="qc-label"><span>▸</span> SAMPLE COUNT <output class="qc-qty" id="qtyOut" for="qtyRange">01</output></p>
-              <div class="qc-slider">
-                <input type="range" id="qtyRange" min="1" max="50" step="1" value="1" aria-label="Sample count" />
-                <div class="qc-scale" aria-hidden="true">
-                  <span>01</span><span>10</span><span>25</span><span>50</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="qc-group">
-              <p class="qc-label"><span>▸</span> TURNAROUND</p>
-              <div class="qc-tat" role="radiogroup" aria-label="Turnaround">
-                <button type="button" class="tat-btn is-on" data-tat="standard" role="radio" aria-checked="true">
-                  <b>STANDARD</b><em>24–48 HR</em>
-                </button>
-                <button type="button" class="tat-btn" data-tat="rush" role="radio" aria-checked="false">
-                  <b>RUSH</b><em>&lt; 24 HR</em>
-                </button>
-              </div>
-            </div>
-            </div>
-          </div>
-
-          <!-- Readout -->
-          <div class="readout" aria-live="polite">
-            <div class="ro-screen" id="roScreen">
-              <div class="ro-shimmer" aria-hidden="true"></div>
-              <div class="ro-rows">
-                <div class="ro-row"><span>TEST</span><b id="roTest">—</b></div>
-                <div class="ro-row"><span>METHOD</span><b id="roMethod">—</b></div>
-                <div class="ro-row"><span>QTY</span><b id="roQty">—</b></div>
-                <div class="ro-row"><span>TURNAROUND</span><b id="roTat">—</b></div>
-              </div>
-              <div class="ro-total">
-                <span>RESULTS IN</span>
-                <b id="roTatBig">24–48 HR</b>
-              </div>
-              <p class="ro-note">PRICED BY THE LAB — QUOTE WITHIN 1 BUSINESS HOUR</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Request form -->
-        <form class="quote-form" id="quoteForm" novalidate>
-          <p class="qc-label"><span>▸</span> REQUEST THIS QUOTE</p>
-          <div class="qf-grid">
-            <label class="qf-field">
-              <span>NAME</span>
-              <input type="text" name="name" autocomplete="name" required />
-            </label>
-            <label class="qf-field">
-              <span>COMPANY</span>
-              <input type="text" name="company" autocomplete="organization" required />
-            </label>
-            <label class="qf-field">
-              <span>EMAIL</span>
-              <input type="email" name="email" autocomplete="email" required />
-            </label>
-            <label class="qf-field">
-              <span>PHONE</span>
-              <input type="tel" name="phone" autocomplete="tel" required />
-            </label>
-            <label class="qf-field qf-notes">
-              <span>NOTES <i>(MATRIX, SAMPLE DETAILS, SPECIAL HANDLING…)</i></span>
-              <textarea name="notes" rows="2" spellcheck="false"></textarea>
-            </label>
-          </div>
-          <div class="qf-actions">
-            <button type="submit" class="btn btn-gold btn-wide" id="submitBtn"><span>SUBMIT QUERY</span></button>
-            <p class="qf-fine">TRANSMITTED TO LAB DESK — NO PAYMENT DUE</p>
-            <p class="qf-error" id="formError" hidden>TRANSMISSION FAILED — EMAIL TEXAS.NUCLEAR.TECHNOLOGIES@GMAIL.COM</p>
-          </div>
-          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
-        </form>
-
-        <!-- Confirmation -->
-        <div class="quote-done" id="quoteDone" hidden>
-          <div class="qd-term">
-            <p class="qd-line">&gt; QUERY RECEIVED</p>
-            <p class="qd-line">&gt; REF: <b id="qdRef">TNT-0000</b></p>
-            <p class="qd-line">&gt; EST: <b id="qdEst">—</b></p>
-            <p class="qd-line qd-gold">&gt; RESPONSE WITHIN 1 BUSINESS HOUR</p>
-          </div>
-          <button type="button" class="btn btn-ghost btn-sm" id="resetBtn">NEW QUERY</button>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ BRAND + CONTACT ============ -->
     <section class="brandmark" aria-label="TNT brand and contact">
       <div class="brandmark-inner reveal">
@@ -434,7 +330,7 @@
     <section class="inst-cta">
       <h2 class="reveal">STANDARD 24–48 HR · RUSH ON REQUEST</h2>
       <p class="reveal d1">QUOTED&nbsp;PER&nbsp;METHOD&nbsp;·&nbsp;CONFIRMED&nbsp;AT&nbsp;INTAKE</p>
-      <a class="btn btn-gold reveal d2" href="#quote">GET A QUOTE</a>
+      <a class="btn btn-gold" href="javascript:void(0)" onclick="window.tntContact&&window.tntContact()>GET A QUOTE</a>
     </section>
   </main>
 
@@ -454,14 +350,10 @@
   </footer>
 
   <!-- quote.js is isomorphic — safe as classic script (file://) and as ES module -->
-  <script defer src="assets/js/quote.js"></script>
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/contact.js"></script>
 
   <div class="skyline" aria-hidden="true"></div>
 
-  <script type="module">
-    import './assets/js/quote.js'; // module-graph entry (side-effect safe)
-  </script>
 </body>
 </html>
