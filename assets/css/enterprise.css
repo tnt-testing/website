@@ -237,3 +237,52 @@ h1, h2, h3 { letter-spacing: 0.02em; }
 .footer a:hover { color: #D4AF37; }
 .tat-btn.is-on, .btn-ghost { border-color: var(--gold); }
 input, textarea, select { color-scheme: light; }
+
+/* ---- spacing & readability pass ---- */
+main .section { padding-top: 84px; padding-bottom: 84px; }
+main .section + .section { border-top: 1px solid var(--line); }
+main .section:nth-of-type(even) { background: #FFFFFF; }
+main .section:nth-of-type(odd)  { background: #F7F5EC; }
+.sec-head { margin-bottom: 34px; }
+.sec-head h2 { font-size: 1.5rem; }
+.sec-tag, .sec-idx { opacity: 1; }
+p { color: #3E4148; }
+h3 { color: #1B1C21; }
+
+/* darker stat band for contrast on the light page */
+.stats { background: #17181C; }
+.stats .stat-num { color: #EDE6D3; }
+.stats .stat-num i { color: #B08D46; }
+.stats .stat-label { color: #9C947F; }
+
+/* clickable matrix cards */
+a.svc-card { text-decoration: none; color: inherit; cursor: pointer; }
+a.svc-card:hover h3 { color: var(--gold-2); }
+a.svc-card::after {
+  content: "DETAIL →";
+  font-family: "JetBrains Mono", monospace;
+  font-size: .58rem; letter-spacing: .2em;
+  color: var(--gold-dim);
+  margin-top: 10px;
+}
+a.svc-card, .svc-card { display: block; }
+
+/* service dept link chip */
+.svc-link, .sec-tag a {
+  color: var(--gold-2);
+  text-decoration: none;
+  letter-spacing: inherit;
+}
+.svc-link:hover { text-decoration: underline; }
+
+/* eyebrow + quote console legibility on light bg */
+.eyebrow, .qc-label, .ro-row span, .bc-label { color: #6E6A5E; }
+.hero-content .eyebrow, .hero-content .hero-tag, .hero-content .hero-sub { color: #F5F3EA; }
+.ro-row b, .ro-total b { color: #EDE6D3; }
+.ro-screen { background: #17181C; }
+.qf-field input, .qf-field textarea { background: #fff; color: #1B1C21; border-color: #DCD5C2; }
+.qf-field span { color: #6E6A5E; }
+.brandmark { background: #17181C; }
+.brandmark * { color: #E8E1CE; }
+.bc-row a { color: #D4AF37; }
+.test-card { background: #fff; }
