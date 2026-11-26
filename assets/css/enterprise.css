@@ -409,3 +409,7 @@ main .section { padding-top: 96px; padding-bottom: 96px; }
 .test-grid, .matrix-grid { gap: 20px; }
 .proc-list .proc-step { padding: 22px 0; }
 .sec-head { margin-bottom: 44px; }
+
+/* kpi strip: force horizontal row */
+.kpi-strip { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.kpi-stat { flex: 0 0 auto; min-width: 118px; padding: 12px 16px; display: flex; flex-direction: column; gap: 3px; }
