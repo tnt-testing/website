@@ -300,6 +300,45 @@ a.svc-card, .svc-card { display: block; }
 /* cards without a top tile need top padding back */
 .matrix-card:not(:has(.mx-img)) { padding-top: 16px; }
 
+/* ---- inline RFQ sections (sector hubs) ---- */
+.rfq-wrap {
+  max-width: 880px; margin: 0 auto;
+  background: #fff; border: 1px solid var(--ent-line); border-top: 3px solid var(--ent-gold);
+  padding: 30px 32px 26px;
+}
+.rfq-wrap .mm-grid { grid-template-columns: 1fr 1fr 1fr; }
+.rfq-wrap .mm-field.full2 { grid-column: span 2; }
+.rfq-wrap .mm-field.full { grid-column: 1 / -1; }
+.rfq-note {
+  font-size: .66rem; letter-spacing: .16em; font-weight: 700;
+  color: var(--ent-gold-dim); margin: 0 0 18px;
+}
+.rfq-checks { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.rfq-checks label {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: .78rem; font-weight: 600; color: #3E4148; cursor: pointer;
+}
+.rfq-checks input { accent-color: var(--ent-gold-dim); width: 15px; height: 15px; margin: 0; }
+.rfq-fieldset { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 8px; }
+.rfq-fieldset > span {
+  font-size: .6rem; letter-spacing: .2em; font-weight: 700; color: var(--ent-gold-dim);
+}
+.rfq-trust {
+  display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center;
+  margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--ent-line);
+}
+.rfq-trust span { font-size: .62rem; letter-spacing: .14em; font-weight: 700; color: #6A6E78; }
+.rfq-done {
+  text-align: center; padding: 36px 0 20px;
+  font-weight: 700; letter-spacing: .12em; font-size: .95rem; color: var(--ent-ink, #23262e);
+}
+.rfq-done b { color: var(--ent-gold-dim); display: block; margin-top: 8px; font-size: .72rem; letter-spacing: .18em; }
+@media (max-width: 760px) {
+  .rfq-wrap .mm-grid { grid-template-columns: 1fr; }
+  .rfq-wrap .mm-field.full2 { grid-column: 1 / -1; }
+  .rfq-wrap { padding: 22px 18px 20px; }
+}
+
 /* faq proc steps keep readable width */
 #faq .proc-list { max-width: 900px; }
 

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/layout.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/enterprise.css?v=7" />
+  <link rel="stylesheet" href="assets/css/enterprise.css?v=8" />
 </head>
 <body data-sample="R&amp;D PROGRAM">
   <header class="nav" id="top">
@@ -129,10 +129,65 @@
       </div>
     </section>
 
+    <section class="section" id="quote">
+      <div class="sec-head reveal"><span class="sec-idx">05</span><h2>SCOPE AN R&amp;D PROGRAM</h2><span class="sec-rule"></span><span class="sec-tag">NDA-FIRST&nbsp;·&nbsp;PROPOSAL&nbsp;&lt;1&nbsp;BUSINESS&nbsp;HOUR</span></div>
+      <p class="sec-lead reveal d1">Tell us the program type, your development stage and the goal — a scientist returns a staged proposal with decision gates, not a rate sheet. Nothing confidential is needed until an NDA is signed.</p>
+      <div class="rfq-wrap reveal">
+        <p class="rfq-note">WORK-FOR-HIRE — ALL DATA, METHODS AND IP BELONG TO YOU</p>
+        <form class="rfq-form mm-form" data-subject="TNT Innovation RFQ" novalidate>
+          <div class="mm-grid">
+            <label class="mm-field"><span>NAME *</span><input type="text" name="name" required autocomplete="name"></label>
+            <label class="mm-field"><span>COMPANY</span><input type="text" name="company" autocomplete="organization"></label>
+            <label class="mm-field"><span>EMAIL *</span><input type="email" name="email" required autocomplete="email"></label>
+            <label class="mm-field"><span>PHONE</span><input type="tel" name="phone" autocomplete="tel"></label>
+            <label class="mm-field"><span>PROGRAM TYPE *</span>
+              <select name="program_type" required>
+                <option value="">SELECT…</option>
+                <option>NOVEL COMPOUND ISOLATION</option>
+                <option>CHARACTERIZATION / STRUCTURE ID</option>
+                <option>CUSTOM METHOD DEVELOPMENT</option>
+                <option>IP DOSSIER / PATENT DATA PACKAGE</option>
+                <option>FORMULATION &amp; STABILITY R&amp;D</option>
+                <option>STANDING R&amp;D RETAINER</option>
+                <option>NOT SURE — NEED GUIDANCE</option>
+              </select></label>
+            <label class="mm-field"><span>DEVELOPMENT STAGE *</span>
+              <select name="stage" required>
+                <option value="">SELECT…</option>
+                <option>CONCEPT / EARLY DISCOVERY</option>
+                <option>BENCH-SCALE</option>
+                <option>PILOT</option>
+                <option>PRE-COMMERCIAL</option>
+                <option>PRODUCTION SUPPORT</option>
+              </select></label>
+            <div class="rfq-fieldset"><span>PLATFORMS LIKELY NEEDED</span>
+              <div class="rfq-checks">
+                <label><input type="checkbox" name="platforms" value="HRAM IDENTIFICATION">HRAM IDENTIFICATION</label>
+                <label><input type="checkbox" name="platforms" value="MS QUANTITATION">MS QUANTITATION</label>
+                <label><input type="checkbox" name="platforms" value="EXTRACTION TRAIN">EXTRACTION TRAIN</label>
+                <label><input type="checkbox" name="platforms" value="IN-VITRO SUITE">IN-VITRO SUITE</label>
+              </div>
+            </div>
+            <div class="rfq-fieldset"><span>CONFIDENTIALITY</span>
+              <div class="rfq-checks">
+                <label><input type="checkbox" name="nda" value="NDA REQUIRED BEFORE DETAILS">NDA REQUIRED BEFORE I SHARE DETAILS</label>
+                <label><input type="checkbox" name="nda" value="EXISTING NDA IN PLACE">EXISTING NDA IN PLACE</label>
+              </div>
+            </div>
+            <label class="mm-field full"><span>OBJECTIVE *</span><textarea name="details" rows="3" required spellcheck="false" placeholder="What are you trying to prove, isolate or file — and what does success look like?"></textarea></label>
+          </div>
+          <button type="submit" class="mm-submit">REQUEST PROGRAM PROPOSAL</button>
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        </form>
+        <div class="rfq-done" hidden>PROGRAM REQUEST RECEIVED<b>STAGED PROPOSAL WITHIN 1 BUSINESS HOUR · OR CALL (817) 384-7003</b></div>
+        <div class="rfq-trust"><span>CLIENT OWNS ALL IP</span><span>NDA BEFORE CONFIDENTIAL DETAILS</span><span>QUOTED FLAT PER STAGE</span><span>DOSSIER-GRADE DOCUMENTATION</span></div>
+      </div>
+    </section>
+
     <section class="inst-cta">
       <h2 class="reveal">PROGRAMS SCOPED UNDER NDA · QUOTED FLAT PER STAGE</h2>
       <p class="reveal d1">YOUR&nbsp;DISCOVERY&nbsp;·&nbsp;YOUR&nbsp;IP&nbsp;·&nbsp;OUR&nbsp;PLATFORM</p>
-      <a class="btn btn-gold reveal d2" href="javascript:void(0)" onclick="window.tntContact()">START AN R&amp;D CONVERSATION</a>
+      <a class="btn btn-gold reveal d2" href="#quote">SCOPE AN R&amp;D PROGRAM</a>
     </section>
   </main>
   <footer class="footer"><div class="footer-inner">
@@ -146,6 +201,7 @@
   </div></footer>
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/contact.js"></script>
+  <script defer src="assets/js/rfq.js"></script>
   <div class="skyline" aria-hidden="true"></div>
 </body>
 </html>

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/layout.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/enterprise.css?v=7" />
+  <link rel="stylesheet" href="assets/css/enterprise.css?v=8" />
 </head>
 <body data-sample="BOTANICAL BIOMASS">
   <header class="nav" id="top">
@@ -156,10 +156,74 @@
       </div>
     </section>
 
+    <section class="section" id="quote">
+      <div class="sec-head reveal"><span class="sec-idx">07</span><h2>REQUEST AN EXTRACTION QUOTE</h2><span class="sec-rule"></span><span class="sec-tag">SCOPED&nbsp;·&nbsp;RESPONSE&nbsp;&lt;1&nbsp;BUSINESS&nbsp;HOUR</span></div>
+      <p class="sec-lead reveal d1">Tell us the feedstock, the target compounds and the output form — a project scientist returns a scoped proposal with stage pricing, not a form letter.</p>
+      <div class="rfq-wrap reveal">
+        <p class="rfq-note">TOLL · BENCH · CONTRACT — NDA AVAILABLE BEFORE DETAILS</p>
+        <form class="rfq-form mm-form" data-subject="TNT Extraction RFQ" novalidate>
+          <div class="mm-grid">
+            <label class="mm-field"><span>NAME *</span><input type="text" name="name" required autocomplete="name"></label>
+            <label class="mm-field"><span>COMPANY</span><input type="text" name="company" autocomplete="organization"></label>
+            <label class="mm-field"><span>EMAIL *</span><input type="email" name="email" required autocomplete="email"></label>
+            <label class="mm-field"><span>PHONE</span><input type="tel" name="phone" autocomplete="tel"></label>
+            <label class="mm-field full2"><span>FEEDSTOCK TYPE *</span>
+              <select name="feedstock" required>
+                <option value="">SELECT…</option>
+                <option>BOTANICAL BIOMASS</option>
+                <option>HEMP (COMPLIANCE DOCS PROVIDED)</option>
+                <option>CRUDE EXTRACT / OIL (REFINEMENT ONLY)</option>
+                <option>FERMENTATION-DERIVED</option>
+                <option>SYNTHETIC / OTHER</option>
+              </select></label>
+            <label class="mm-field"><span>TARGET COMPOUND(S)</span><input type="text" name="target_compounds" placeholder="e.g., cannabinoids, polyphenols"></label>
+            <label class="mm-field"><span>DESIRED OUTPUT *</span>
+              <select name="output" required>
+                <option value="">SELECT…</option>
+                <option>CRUDE EXTRACT</option>
+                <option>REFINED / WINTERIZED OIL</option>
+                <option>DISTILLATE</option>
+                <option>ISOLATE 99%+</option>
+                <option>CHARACTERIZATION ONLY</option>
+              </select></label>
+            <label class="mm-field"><span>BATCH SIZE *</span>
+              <select name="batch_size" required>
+                <option value="">SELECT…</option>
+                <option>BENCH — UNDER 1 KG</option>
+                <option>PILOT — 1–50 KG</option>
+                <option>TOLL — 50–500 LB</option>
+                <option>PRODUCTION — 500+ LB</option>
+                <option>NOT SURE</option>
+              </select></label>
+            <label class="mm-field"><span>SOLVENT REQUIREMENT</span>
+              <select name="solvent_req">
+                <option>BEST METHOD FOR THE JOB</option>
+                <option>SOLVENT-FREE CO2 REQUIRED</option>
+                <option>ETHANOL ACCEPTABLE</option>
+              </select></label>
+            <div class="rfq-fieldset"><span>REFINEMENT ADD-ONS</span>
+              <div class="rfq-checks">
+                <label><input type="checkbox" name="addons" value="WINTERIZATION">WINTERIZATION</label>
+                <label><input type="checkbox" name="addons" value="DECARBOXYLATION">DECARBOXYLATION</label>
+                <label><input type="checkbox" name="addons" value="DISTILLATION">DISTILLATION</label>
+                <label><input type="checkbox" name="addons" value="CHROMATOGRAPHY">CHROMATOGRAPHY</label>
+                <label><input type="checkbox" name="addons" value="CRYSTALLIZATION">CRYSTALLIZATION</label>
+              </div>
+            </div>
+            <label class="mm-field full"><span>GOAL *</span><textarea name="details" rows="3" required spellcheck="false" placeholder="What are you extracting, what does the output need to do, and what's the timeline?"></textarea></label>
+          </div>
+          <button type="submit" class="mm-submit">SEND EXTRACTION REQUEST</button>
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        </form>
+        <div class="rfq-done" hidden>EXTRACTION REQUEST RECEIVED<b>SCOPED PROPOSAL WITHIN 1 BUSINESS HOUR · OR CALL (817) 384-7003</b></div>
+        <div class="rfq-trust"><span>NDA AVAILABLE</span><span>CHAIN-OF-CUSTODY STANDARD</span><span>IN-HOUSE COA ON EVERY BATCH</span><span>WORK-FOR-HIRE — YOU OWN THE OUTPUT</span></div>
+      </div>
+    </section>
+
     <section class="inst-cta">
       <h2 class="reveal">BENCH STUDIES QUOTED FLAT · TOLL RUNS PER LB/KG</h2>
       <p class="reveal d1">EVERY&nbsp;BATCH&nbsp;SHIPS&nbsp;WITH&nbsp;AN&nbsp;IN-HOUSE&nbsp;COA</p>
-      <a class="btn btn-gold reveal d2" href="javascript:void(0)" onclick="window.tntContact()">DISCUSS AN EXTRACTION RUN</a>
+      <a class="btn btn-gold reveal d2" href="#quote">REQUEST AN EXTRACTION QUOTE</a>
     </section>
   </main>
   <footer class="footer"><div class="footer-inner">
@@ -173,6 +237,7 @@
   </div></footer>
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/contact.js"></script>
+  <script defer src="assets/js/rfq.js"></script>
   <div class="skyline" aria-hidden="true"></div>
 </body>
 </html>

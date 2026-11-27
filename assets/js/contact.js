@@ -57,6 +57,7 @@
     function open() { modal.classList.add("open"); document.body.style.overflow = "hidden"; }
     function close() { modal.classList.remove("open"); document.body.style.overflow = ""; }
 
+    var form = modal.querySelector(".mm-form");
     var pre = document.body.getAttribute("data-sample");
     if (pre) {
       var sel = form.querySelector('select[name="sample_type"]');
@@ -69,8 +70,6 @@
     modal.querySelector(".tnt-modal-back").addEventListener("click", close);
     modal.querySelector(".tnt-modal-x").addEventListener("click", close);
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
-
-    var form = modal.querySelector(".mm-form");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;

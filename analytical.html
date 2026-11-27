@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/layout.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/enterprise.css?v=7" />
+  <link rel="stylesheet" href="assets/css/enterprise.css?v=8" />
 </head>
 <body data-sample="ANALYTICAL SAMPLE">
   <header class="nav" id="top">
@@ -131,10 +131,73 @@
       </div>
     </section>
 
+    <section class="section" id="quote">
+      <div class="sec-head reveal"><span class="sec-idx">04</span><h2>REQUEST A TEST QUOTE</h2><span class="sec-rule"></span><span class="sec-tag">RESPONSE&nbsp;&lt;1&nbsp;BUSINESS&nbsp;HOUR</span></div>
+      <p class="sec-lead reveal d1">Tell us the matrix, the scope you need and the turnaround — quotes come back method-referenced with sample requirements and paperwork spelled out, not a ballpark.</p>
+      <div class="rfq-wrap reveal">
+        <p class="rfq-note">STANDARD 24–72 HR · &lt;24 HR IN-HOUSE RUSH AVAILABLE</p>
+        <form class="rfq-form mm-form" data-subject="TNT Analytical RFQ" novalidate>
+          <div class="mm-grid">
+            <label class="mm-field"><span>NAME *</span><input type="text" name="name" required autocomplete="name"></label>
+            <label class="mm-field"><span>COMPANY</span><input type="text" name="company" autocomplete="organization"></label>
+            <label class="mm-field"><span>EMAIL *</span><input type="email" name="email" required autocomplete="email"></label>
+            <label class="mm-field"><span>PHONE</span><input type="tel" name="phone" autocomplete="tel"></label>
+            <label class="mm-field"><span>MATRIX *</span>
+              <select name="matrix" required>
+                <option value="">SELECT…</option>
+                <option>SUPPLEMENT / NUTRACEUTICAL</option>
+                <option>FOOD / INGREDIENT</option>
+                <option>BEVERAGE</option>
+                <option>COSMETIC / PERSONAL CARE</option>
+                <option>WATER / WASTEWATER</option>
+                <option>OIL &amp; GAS / PETROLEUM</option>
+                <option>SOIL / ENVIRONMENTAL</option>
+                <option>PHARMA / OTC LOT</option>
+                <option>UNKNOWN / OTHER</option>
+              </select></label>
+            <label class="mm-field"><span>SAMPLE COUNT</span><input type="number" name="quantity" min="1" value="1"></label>
+            <label class="mm-field"><span>TURNAROUND</span>
+              <select name="turnaround">
+                <option>STANDARD — 24–72 HR</option>
+                <option>RUSH — &lt;24 HR IN-HOUSE</option>
+                <option>SCHEDULED / RECURRING PROGRAM</option>
+              </select></label>
+            <div class="rfq-fieldset"><span>TEST SCOPE NEEDED *</span>
+              <div class="rfq-checks">
+                <label><input type="checkbox" name="scope" value="ELEMENTAL / METALS">ELEMENTAL / METALS</label>
+                <label><input type="checkbox" name="scope" value="VOLATILES / SOLVENTS">VOLATILES / SOLVENTS</label>
+                <label><input type="checkbox" name="scope" value="NONVOLATILES / CONTAMINANTS">NONVOLATILES / CONTAMINANTS</label>
+                <label><input type="checkbox" name="scope" value="UNKNOWN ID">UNKNOWN ID</label>
+                <label><input type="checkbox" name="scope" value="MICROBIOLOGY">MICROBIOLOGY</label>
+                <label><input type="checkbox" name="scope" value="NUTRITION / ALLERGEN">NUTRITION / ALLERGEN</label>
+                <label><input type="checkbox" name="scope" value="STABILITY / PHYSICAL">STABILITY / PHYSICAL</label>
+                <label><input type="checkbox" name="scope" value="REGULATED / SPECIALTY">REGULATED / SPECIALTY</label>
+              </div>
+            </div>
+            <div class="rfq-fieldset"><span>COMPLIANCE FRAME</span>
+              <div class="rfq-checks">
+                <label><input type="checkbox" name="compliance" value="USP">USP</label>
+                <label><input type="checkbox" name="compliance" value="EPA">EPA</label>
+                <label><input type="checkbox" name="compliance" value="FDA / MoCRA">FDA / MoCRA</label>
+                <label><input type="checkbox" name="compliance" value="AOAC">AOAC</label>
+                <label><input type="checkbox" name="compliance" value="ISO 17025 DOC">ISO 17025 DOC</label>
+                <label><input type="checkbox" name="compliance" value="CHAIN-OF-CUSTODY">CHAIN-OF-CUSTODY</label>
+              </div>
+            </div>
+            <label class="mm-field full"><span>WHAT DO YOU NEED TESTED? *</span><textarea name="details" rows="3" required spellcheck="false" placeholder="Analytes, limits you need to hit, and what the report is for — release, label claim, regulatory submission…"></textarea></label>
+          </div>
+          <button type="submit" class="mm-submit">SEND TEST REQUEST</button>
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        </form>
+        <div class="rfq-done" hidden>TEST REQUEST RECEIVED<b>METHOD-REFERENCED QUOTE WITHIN 1 BUSINESS HOUR · OR CALL (817) 384-7003</b></div>
+        <div class="rfq-trust"><span>METHOD-REFERENCED REPORTS</span><span>CHAIN-OF-CUSTODY AVAILABLE</span><span>24–72 HR STANDARD</span><span>CONFIDENTIAL BY DEFAULT</span></div>
+      </div>
+    </section>
+
     <section class="inst-cta">
       <h2 class="reveal">STANDARD 24–72 HR · &lt;24 HR IN-HOUSE RUSH</h2>
       <p class="reveal d1">QUOTED&nbsp;PER&nbsp;METHOD&nbsp;·&nbsp;CONFIRMED&nbsp;AT&nbsp;INTAKE</p>
-      <a class="btn btn-gold reveal d2" href="javascript:void(0)" onclick="window.tntContact()">REQUEST A TEST</a>
+      <a class="btn btn-gold reveal d2" href="#quote">REQUEST A TEST QUOTE</a>
     </section>
   </main>
   <footer class="footer"><div class="footer-inner">
@@ -148,6 +211,7 @@
   </div></footer>
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/contact.js"></script>
+  <script defer src="assets/js/rfq.js"></script>
   <div class="skyline" aria-hidden="true"></div>
 </body>
 </html>
