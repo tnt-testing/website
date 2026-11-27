@@ -561,8 +561,8 @@
 
 /* ---------- CTA band ---------- */
 .inst-cta {
-  margin-top: clamp(70px, 8vw, 110px);
-  padding: clamp(50px, 6vw, 80px) var(--gutter);
+  margin-top: clamp(40px, 5vw, 64px);
+  padding: clamp(34px, 4vw, 52px) var(--gutter);
   border-top: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
   background:
@@ -580,7 +580,7 @@
   font-size: 17px;
   letter-spacing: 0.24em;
   color: var(--silver-dim);
-  margin-bottom: 34px;
+  margin-bottom: 22px;
 }
 .inst-cta .btn { padding: 18px 38px; }
 
