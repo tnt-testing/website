@@ -72,13 +72,19 @@ h1, h2, h3 { letter-spacing: 0.02em; }
   transition: transform .18s ease, box-shadow .18s ease;
 }
 .matrix-card:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(23,24,28,.10); }
-.matrix-card .mx-img {
+.matrix-card .mx-img,
+.matrix-card .mx-emoji {
   display: block;
   width: calc(100% + 32px);
   margin: 0 -16px 12px;
   height: 130px;
   object-fit: cover;
   border-bottom: 1px solid var(--ent-line);
+}
+.matrix-card .mx-emoji {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; line-height: 1;
+  background: linear-gradient(160deg, #1B1D23, #23262E 60%, #1B1D23);
 }
 .matrix-card .mx-num {
   font-family: "JetBrains Mono", monospace;
@@ -292,14 +298,14 @@ a.svc-card, .svc-card { display: block; }
 .footer-nav a { color: #C9C2B0; text-decoration: none; font-size: .72rem; letter-spacing: .14em; }
 .footer-nav a:hover { color: #D4AF37; }
 
-/* cards without images need top padding back */
-.matrix-card:not(:has(.mx-img)) { padding-top: 16px; }
+/* cards without a top tile need top padding back */
+.matrix-card:not(:has(.mx-img)):not(:has(.mx-emoji)) { padding-top: 16px; }
 
 /* faq proc steps keep readable width */
 #faq .proc-list { max-width: 900px; }
 
 @media (max-width: 640px) {
-  .matrix-card .mx-img { height: 104px; }
+  .matrix-card .mx-img, .matrix-card .mx-emoji { height: 104px; font-size: 2.4rem; }
   .tnt-modal-card { max-height: 96vh; }
   .contact-fab { right: 14px; bottom: 14px; padding: 11px 15px; }
   main .section { padding-top: 56px; padding-bottom: 56px; }
