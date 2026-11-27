@@ -49,7 +49,7 @@
             '<button type="submit" class="mm-submit">SEND INQUIRY</button>' +
             '<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">' +
           '</form>' +
-          '<div class="mm-done" hidden>INQUIRY RECEIVED<br><b>RESPONSE WITHIN 1 BUSINESS HOUR</b><br>OR REACH US AT (972) 822-6494</div>' +
+          '<div class="mm-done" hidden>INQUIRY RECEIVED<br><b>RESPONSE WITHIN 1 BUSINESS HOUR</b><br>OR REACH US AT (817) 384-7003</div>' +
         '</div>' +
       '</div>';
     document.body.appendChild(modal);

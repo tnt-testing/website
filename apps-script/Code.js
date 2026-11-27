@@ -242,13 +242,13 @@ function doPost(e) {
       subject: "TNT — quote request received",
       body: "We received your request:\n\n" + text +
             "\n\nOur lab desk responds within 1 business hour.\n" +
-            "(972) 822-6494 · 2101 Gateway Dr, Irving, TX 75038\n\n" +
+            "(817) 384-7003 · 2101 Gateway Dr, Irving, TX 75038\n\n" +
             "— Texas Nuclear Technologies",
       htmlBody:
         '<div style="font-family:Arial,sans-serif;font-size:14px;color:#c0c6ce;">' +
         '<p>We received your request:</p>' + html +
         '<p style="color:#8a94a6;">Our lab desk responds within 1 business hour.<br>' +
-        '(972) 822-6494 · 2101 Gateway Dr, Irving, TX 75038</p>' +
+        '(817) 384-7003 · 2101 Gateway Dr, Irving, TX 75038</p>' +
         '<p style="color:#d4af37;">— Texas Nuclear Technologies</p></div>'
     });
   }
