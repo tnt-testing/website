@@ -338,6 +338,29 @@ a.svc-card, .svc-card { display: block; }
 }
 .dd-menu a:hover { background: #F5F2E8; color: var(--gold-dim); }
 
+/* ---- mega dropdown: 3 sector columns ---- */
+.dd-menu.dd-mega {
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+  min-width: 660px; padding: 14px 4px 16px;
+}
+.dd-mega .dd-col { padding: 0 8px; }
+.dd-mega .dd-col + .dd-col { border-left: 1px solid var(--line); }
+.dd-mega a.dd-sect {
+  padding: 6px 14px 9px; margin: 0 6px 6px;
+  font-family: "Manrope", sans-serif; font-size: .82rem; font-weight: 800;
+  letter-spacing: .1em; color: var(--ink);
+  border-bottom: 2px solid var(--gold);
+}
+.dd-mega a.dd-sect:hover { background: none; color: var(--gold-dim); }
+.dd-mega .dd-sub {
+  font-size: .55rem; letter-spacing: .22em; font-weight: 700;
+  color: var(--gold-dim); padding: 8px 20px 2px; margin: 0;
+}
+@media (max-width: 900px) {
+  .dd-menu.dd-mega { min-width: 0; grid-template-columns: 1fr; max-height: 70vh; overflow-y: auto; }
+  .dd-mega .dd-col + .dd-col { border-left: none; border-top: 1px solid var(--line); margin-top: 6px; padding-top: 8px; }
+}
+
 /* ---- typography normalization ---- */
 body { font-size: .92rem; }
 .section h2, .sec-head h2 { font-size: 1.4rem; }
